@@ -112,16 +112,6 @@ namespace uTinyRipper.Converters.Project
 					}
 					break;
 
-				case ClassIDType.Font:
-					{
-						Font font = (Font)asset;
-						if (EngineBuiltInAssets.TryGetFont(font.Name, version, out engineAsset))
-						{
-							return true;
-						}
-					}
-					break;
-
 				case ClassIDType.MonoBehaviour:
 					{
 						MonoBehaviour behaviour = (MonoBehaviour)asset;

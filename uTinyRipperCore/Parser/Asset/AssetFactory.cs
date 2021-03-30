@@ -38,12 +38,8 @@ namespace uTinyRipper
 					return new TimeManager(assetInfo);
 				case ClassIDType.InputManager:
 					return new InputManager(assetInfo);
-				case ClassIDType.Camera:
-					return new Camera(assetInfo);
 				case ClassIDType.Material:
 					return new Material(assetInfo);
-				case ClassIDType.GraphicsSettings:
-					return new GraphicsSettings(assetInfo);
 				case ClassIDType.Skybox:
 					return new Skybox(assetInfo);
 				case ClassIDType.QualitySettings:
@@ -56,10 +52,6 @@ namespace uTinyRipper
 					return new TagManager(assetInfo);
 				case ClassIDType.GUILayer:
 					return new GUILayer(assetInfo);
-				case ClassIDType.TextMesh:
-					return new TextMesh(assetInfo);
-				case ClassIDType.Light:
-					return new Light(assetInfo);
 				case ClassIDType.MonoBehaviour:
 					return new MonoBehaviour(assetInfo);
 				case ClassIDType.MonoScript:
@@ -68,12 +60,8 @@ namespace uTinyRipper
 					return new MonoManager(assetInfo);
 				case ClassIDType.FlareLayer:
 					return new FlareLayer(assetInfo);
-				case ClassIDType.Font:
-					return new Font(assetInfo);
 				case ClassIDType.GUITexture:
 					return new GUITexture(assetInfo);
-				case ClassIDType.GUIText:
-					return new GUIText(assetInfo);
 				case ClassIDType.BuildSettings:
 					return new BuildSettings(assetInfo);
 				case ClassIDType.AssetBundle:
@@ -94,16 +82,10 @@ namespace uTinyRipper
 					return new SortingGroup(assetInfo);
 				case ClassIDType.ReflectionProbe:
 					return new ReflectionProbe(assetInfo);
-				case ClassIDType.CanvasRenderer:
-					return new CanvasRenderer(assetInfo);
-				case ClassIDType.Canvas:
-					return new Canvas(assetInfo);
 				case ClassIDType.RectTransform:
 					return new RectTransform(assetInfo);
 				case ClassIDType.CanvasGroup:
 					return new CanvasGroup(assetInfo);
-				case ClassIDType.ClusterInputManager:
-					return new ClusterInputManager(assetInfo);
 				case ClassIDType.UnityConnectSettings:
 					return new UnityConnectSettings(assetInfo);
 

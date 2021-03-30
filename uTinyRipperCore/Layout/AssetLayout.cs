@@ -21,7 +21,6 @@ namespace uTinyRipper.Layout
 			Behaviour = new BehaviourLayout(info);
 			Component = new ComponentLayout(info);
 			EditorExtension = new EditorExtensionLayout(info);
-			Font = new FontLayout(info);
 			GameObject = new GameObjectLayout(info);
 			MonoBehaviour = new MonoBehaviourLayout(info);
 			MonoScript = new MonoScriptLayout(info);
@@ -71,7 +70,6 @@ namespace uTinyRipper.Layout
 		public BehaviourLayout Behaviour { get; }
 		public ComponentLayout Component { get; }
 		public EditorExtensionLayout EditorExtension { get; }
-		public FontLayout Font { get; }
 		public GameObjectLayout GameObject { get; }
 		public MonoBehaviourLayout MonoBehaviour { get; }
 		public MonoScriptLayout MonoScript { get; }
