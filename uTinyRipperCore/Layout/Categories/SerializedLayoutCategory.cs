@@ -6,7 +6,6 @@
 		{
 			AABB = new AABBLayout(info);
 			AABBi = new AABBiLayout(info);
-			AnimationCurveTpl = new AnimationCurveTplLayout(info);
 			ColorRGBA32 = new ColorRGBA32Layout(info);
 			ColorRGBAf = new ColorRGBAfLayout(info);
 			Gradient = new GradientLayout(info);
@@ -24,7 +23,6 @@
 
 		public AABBLayout AABB { get; }
 		public AABBiLayout AABBi { get; }
-		public AnimationCurveTplLayout AnimationCurveTpl { get; }
 		public ColorRGBA32Layout ColorRGBA32 { get; }
 		public ColorRGBAfLayout ColorRGBAf { get; }
 		public GradientLayout Gradient { get; }

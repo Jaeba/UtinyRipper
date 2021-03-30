@@ -66,8 +66,6 @@ namespace uTinyRipper.Game.Assembly
 					return new ColorRGBA32();
 				case LayerMaskName:
 					return new LayerMask();
-				case AnimationCurveName:
-					return new AnimationCurveTpl<Float>();
 				case GradientName:
 					return new Gradient();
 				case RectOffsetName:

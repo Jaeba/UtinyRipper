@@ -112,9 +112,6 @@ namespace uTinyRipper.Converters
 				case SerializableType.LayerMaskName:
 					LayerMaskLayout.GenerateTypeTree(context, name);
 					break;
-				case SerializableType.AnimationCurveName:
-					AnimationCurveTplLayout.GenerateTypeTree(context, name, SingleLayout.GenerateTypeTree);
-					break;
 				case SerializableType.GradientName:
 					GradientLayout.GenerateTypeTree(context, name);
 					break;

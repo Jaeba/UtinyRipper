@@ -44,10 +44,6 @@ namespace uTinyRipper
 					return new Material(assetInfo);
 				case ClassIDType.GraphicsSettings:
 					return new GraphicsSettings(assetInfo);
-				case ClassIDType.MeshFilter:
-					return new MeshFilter(assetInfo);
-				case ClassIDType.Mesh:
-					return new Mesh(assetInfo);
 				case ClassIDType.Skybox:
 					return new Skybox(assetInfo);
 				case ClassIDType.QualitySettings:
@@ -58,8 +54,6 @@ namespace uTinyRipper
 					return new TextAsset(assetInfo);
 				case ClassIDType.TagManager:
 					return new TagManager(assetInfo);
-				case ClassIDType.Avatar:
-					return new Avatar(assetInfo);
 				case ClassIDType.GUILayer:
 					return new GUILayer(assetInfo);
 				case ClassIDType.TextMesh:
@@ -115,9 +109,6 @@ namespace uTinyRipper
 
 				case ClassIDType.PrefabInstance:
 					return new PrefabInstance(assetInfo);
-				case ClassIDType.AvatarMask:
-				case ClassIDType.AvatarMaskOld:
-					return new AvatarMask(assetInfo);
 				case ClassIDType.DefaultAsset:
 					return new DefaultAsset(assetInfo);
 				case ClassIDType.DefaultImporter:

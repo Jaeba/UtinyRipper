@@ -102,16 +102,6 @@ namespace uTinyRipper.Converters.Project
 					}
 					break;
 
-				case ClassIDType.Mesh:
-					{
-						Mesh mesh = (Mesh)asset;
-						if (EngineBuiltInAssets.TryGetMesh(mesh.Name, version, out engineAsset))
-						{
-							return true;
-						}
-					}
-					break;
-
 				case ClassIDType.Shader:
 					{
 						Shader shader = (Shader)asset;

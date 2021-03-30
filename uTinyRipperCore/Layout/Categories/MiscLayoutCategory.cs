@@ -7,10 +7,8 @@ namespace uTinyRipper.Layout
 		public MiscLayoutCategory(LayoutInfo info)
 		{
 			GUID = new GUIDLayout(info);
-			KeyframeTpl = new KeyframeTplLayout(info);
 		}
 
 		public GUIDLayout GUID { get; }
-		public KeyframeTplLayout KeyframeTpl { get; }
 	}
 }
