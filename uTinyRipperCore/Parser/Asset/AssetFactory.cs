@@ -36,8 +36,6 @@ namespace uTinyRipper
 					return new Transform(assetInfo);
 				case ClassIDType.TimeManager:
 					return new TimeManager(assetInfo);
-				case ClassIDType.AudioManager:
-					return new AudioManager(assetInfo);
 				case ClassIDType.InputManager:
 					return new InputManager(assetInfo);
 				case ClassIDType.Physics2DSettings:
@@ -94,12 +92,6 @@ namespace uTinyRipper
 					return new CapsuleCollider2D(assetInfo);
 				case ClassIDType.TagManager:
 					return new TagManager(assetInfo);
-				case ClassIDType.AudioListener:
-					return new AudioListener(assetInfo);
-				case ClassIDType.AudioSource:
-					return new AudioSource(assetInfo);
-				case ClassIDType.AudioClip:
-					return new AudioClip(assetInfo);
 				case ClassIDType.RenderTexture:
 					return new RenderTexture(assetInfo);
 				case ClassIDType.Cubemap:
@@ -168,8 +160,6 @@ namespace uTinyRipper
 					return new LightmapSettings(assetInfo);
 				case ClassIDType.EditorSettings:
 					return new EditorSettings(assetInfo);
-				case ClassIDType.AudioReverbZone:
-					return new AudioReverbZone(assetInfo);
 				case ClassIDType.OffMeshLink:
 					return new OffMeshLink(assetInfo);
 				case ClassIDType.OcclusionArea:

@@ -20,7 +20,6 @@ namespace uTinyRipper.Classes
 			IsLoop = reader.ReadBoolean();
 			reader.AlignStream();
 
-			AudioClip.Read(reader);
 			MovieData = reader.ReadByteArray();
 			reader.AlignStream();
 
@@ -41,15 +40,12 @@ namespace uTinyRipper.Classes
 			{
 				yield return asset;
 			}
-
-			yield return context.FetchDependency(AudioClip, AudioClipName);
 		}
 
 		protected override YAMLMappingNode ExportYAMLRoot(IExportContainer container)
 		{
 			YAMLMappingNode node = base.ExportYAMLRoot(container);
 			node.Add(LoopName, IsLoop);
-			node.Add(AudioClipName, AudioClip.ExportYAML(container));
 			node.Add(MovieDataName, MovieData.ExportYAML());
 			node.Add(ColorSpaceName, (int)ColorSpace);
 			return node;
@@ -78,7 +74,5 @@ namespace uTinyRipper.Classes
 		public const string AudioClipName = "m_AudioClip";
 		public const string MovieDataName = "m_MovieData";
 		public const string ColorSpaceName = "m_ColorSpace";
-
-		public PPtr<AudioClip> AudioClip;
 	}
 }
