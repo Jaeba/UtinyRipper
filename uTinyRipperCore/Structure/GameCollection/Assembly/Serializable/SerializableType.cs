@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using uTinyRipper.Classes;
-using uTinyRipper.Classes.Misc;
 using uTinyRipper.Converters;
 using uTinyRipper.Layout;
 using uTinyRipper.SerializedFiles;
