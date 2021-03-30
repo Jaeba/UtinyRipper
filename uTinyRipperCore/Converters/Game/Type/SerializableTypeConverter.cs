@@ -3,7 +3,6 @@ using System.Linq;
 using uTinyRipper.Classes;
 using uTinyRipper.Game.Assembly;
 using uTinyRipper.Layout;
-using uTinyRipper.Layout.AnimationClips;
 using uTinyRipper.SerializedFiles;
 
 namespace uTinyRipper.Converters
@@ -41,10 +40,6 @@ namespace uTinyRipper.Converters
 			{
 				context.AddString(name);
 			}
-			else if (IsEngineCurve(origin))
-			{
-				GenerateEngineCurve(context, origin, name);
-			}
 			else if (origin.IsEngineStruct())
 			{
 				GenerateEngineStruct(context, origin, name);
@@ -71,28 +66,6 @@ namespace uTinyRipper.Converters
 
 				default:
 					return false;
-			}
-		}
-
-		private static void GenerateEngineCurve(TypeTreeContext context, SerializableType origin, string name)
-		{
-			switch (origin.Name)
-			{
-				case SerializableType.FloatCurveName:
-					FloatCurveLayout.GenerateTypeTree(context, name);
-					break;
-				case SerializableType.Vector3CurveName:
-					Vector3CurveLayout.GenerateTypeTree(context, name);
-					break;
-				case SerializableType.QuaternionCurveName:
-					QuaternionCurveLayout.GenerateTypeTree(context, name);
-					break;
-				case SerializableType.PPtrCurveName:
-					PPtrCurveLayout.GenerateTypeTree(context, name);
-					break;
-
-				default:
-					throw new Exception($"Unknown engine curve {origin.Name}");
 			}
 		}
 

@@ -18,8 +18,6 @@ namespace uTinyRipper.Layout
 			Misc = new MiscLayoutCategory(info);
 			Serialized = new SerializedLayoutCategory(info);
 
-			Animation = new AnimationLayout(info);
-			AnimationClip = new AnimationClipLayout(info);
 			Behaviour = new BehaviourLayout(info);
 			Component = new ComponentLayout(info);
 			EditorExtension = new EditorExtensionLayout(info);
@@ -71,9 +69,6 @@ namespace uTinyRipper.Layout
 
 		public MiscLayoutCategory Misc { get; }
 		public SerializedLayoutCategory Serialized { get; }
-
-		public AnimationLayout Animation { get; }
-		public AnimationClipLayout AnimationClip { get; }
 		public BehaviourLayout Behaviour { get; }
 		public ComponentLayout Component { get; }
 		public EditorExtensionLayout EditorExtension { get; }

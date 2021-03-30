@@ -92,8 +92,6 @@ namespace uTinyRipper
 					return new EdgeCollider2D(assetInfo);
 				case ClassIDType.CapsuleCollider2D:
 					return new CapsuleCollider2D(assetInfo);
-				case ClassIDType.AnimationClip:
-					return new AnimationClip(assetInfo);
 				case ClassIDType.TagManager:
 					return new TagManager(assetInfo);
 				case ClassIDType.AudioListener:
@@ -108,12 +106,8 @@ namespace uTinyRipper
 					return new Cubemap(assetInfo);
 				case ClassIDType.Avatar:
 					return new Avatar(assetInfo);
-				case ClassIDType.AnimatorController:
-					return new AnimatorController(assetInfo);
 				case ClassIDType.GUILayer:
 					return new GUILayer(assetInfo);
-				case ClassIDType.Animator:
-					return new Animator(assetInfo);
 				case ClassIDType.TrailRenderer:
 					return new TrailRenderer(assetInfo);
 				case ClassIDType.TextMesh:
@@ -122,8 +116,6 @@ namespace uTinyRipper
 					return new RenderSettings(assetInfo);
 				case ClassIDType.Light:
 					return new Light(assetInfo);
-				case ClassIDType.Animation:
-					return new Animation(assetInfo);
 				case ClassIDType.MonoBehaviour:
 					return new MonoBehaviour(assetInfo);
 				case ClassIDType.MonoScript:
@@ -208,8 +200,6 @@ namespace uTinyRipper
 					return new ReflectionProbe(assetInfo);
 				case ClassIDType.Terrain:
 					return new Terrain(assetInfo);
-				case ClassIDType.AnimatorOverrideController:
-					return new AnimatorOverrideController(assetInfo);
 				case ClassIDType.CanvasRenderer:
 					return new CanvasRenderer(assetInfo);
 				case ClassIDType.Canvas:

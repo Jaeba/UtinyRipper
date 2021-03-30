@@ -127,19 +127,9 @@ namespace uTinyRipper.Classes
 				reader.AlignStream();
 			}
 
-			if (HasOffscreen(reader.Version))
-			{
-				DisableAnimationWhenOffscreen.Read(reader);
-			}
-
 			if (IsMeshFirst(reader.Version))
 			{
 				Mesh.Read(reader);
-			}
-
-			if (HasAnimation(reader.Version))
-			{
-				Animation.Read(reader);
 			}
 
 			Bones = reader.ReadAssetArray<PPtr<Transform>>();
@@ -188,10 +178,6 @@ namespace uTinyRipper.Classes
 				yield return asset;
 			}
 
-			if (HasOffscreen(context.Version))
-			{
-				yield return context.FetchDependency(DisableAnimationWhenOffscreen, DisableAnimationWhenOffscreenName);
-			}
 			yield return context.FetchDependency(Mesh, MeshName);
 			foreach (PPtr<Object> asset in context.FetchDependencies(Bones, BonesName))
 			{
@@ -236,12 +222,10 @@ namespace uTinyRipper.Classes
 		public const string AABBName = "m_AABB";
 		public const string DirtyAABBName = "m_DirtyAABB";
 
-		public PPtr<Animation> DisableAnimationWhenOffscreen;
 		/// <summary>
 		/// LodMesh previously
 		/// </summary>
 		public PPtr<Mesh> Mesh;
-		public PPtr<Animation> Animation;
 		public Matrix4x4f CurrentPose;
 		public PPtr<Transform> RootBone;
 		public AABB AABB;

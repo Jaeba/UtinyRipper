@@ -90,8 +90,6 @@ namespace uTinyRipper.Converters
 			{
 				switch (asset.ClassID)
 				{
-					case ClassIDType.AnimatorController:
-						return new AnimatorControllerExportCollection(this, virtualFile, asset);
 
 					case ClassIDType.TimeManager:
 					case ClassIDType.AudioManager:
