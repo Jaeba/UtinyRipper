@@ -92,7 +92,6 @@ namespace uTinyRipper.Converters
 				{
 
 					case ClassIDType.TimeManager:
-					case ClassIDType.AudioManager:
 					case ClassIDType.InputManager:
 					case ClassIDType.Physics2DSettings:
 					case ClassIDType.GraphicsSettings:

@@ -43,7 +43,6 @@ namespace uTinyRipper.Converters
 			OverrideYamlExporter(ClassIDType.GameObject);
 			OverrideYamlExporter(ClassIDType.Transform);
 			OverrideYamlExporter(ClassIDType.TimeManager);
-			OverrideYamlExporter(ClassIDType.AudioManager);
 			OverrideYamlExporter(ClassIDType.InputManager);
 			OverrideYamlExporter(ClassIDType.Physics2DSettings);
 			OverrideYamlExporter(ClassIDType.Camera);
@@ -58,9 +57,6 @@ namespace uTinyRipper.Converters
 			OverrideYamlExporter(ClassIDType.Skybox);
 			OverrideYamlExporter(ClassIDType.QualitySettings);
 			OverrideYamlExporter(ClassIDType.TextAsset);
-			OverrideYamlExporter(ClassIDType.Rigidbody2D);
-			OverrideYamlExporter(ClassIDType.Collider2D);
-			OverrideYamlExporter(ClassIDType.Rigidbody);
 			OverrideYamlExporter(ClassIDType.PhysicsManager);
 			OverrideYamlExporter(ClassIDType.CircleCollider2D);
 			OverrideYamlExporter(ClassIDType.PolygonCollider2D);

@@ -66,10 +66,6 @@ namespace uTinyRipper
 					return new Shader(assetInfo);
 				case ClassIDType.TextAsset:
 					return new TextAsset(assetInfo);
-				case ClassIDType.Rigidbody2D:
-					return new Rigidbody2D(assetInfo);
-				case ClassIDType.Rigidbody:
-					return new Rigidbody(assetInfo);
 				case ClassIDType.PhysicsManager:
 					return new PhysicsManager(assetInfo);
 				case ClassIDType.CircleCollider2D:
