@@ -219,32 +219,6 @@ namespace uTinyRipper.Converters
 					}
 					collections.Add(collection);
 				}
-
-				if (options.ExportDependencies)
-				{
-					DependencyContext context = new DependencyContext(exportLayout, true);
-					foreach (PPtr<Object> pointer in asset.FetchDependencies(context))
-					{
-						if (pointer.IsNull)
-						{
-							continue;
-						}
-
-						Object dependency = pointer.FindAsset(asset.File);
-						if (dependency == null)
-						{
-							string hierarchy = $"[{asset.File.Name}]" + asset.File.GetAssetLogString(asset.PathID) + "." + context.GetPointerPath();
-							Logger.Log(LogType.Warning, LogCategory.Export, $"{hierarchy}'s dependency {context.PointerName} = {pointer.ToLogString(asset.File)} wasn't found");
-							continue;
-						}
-
-						if (!depSet.Contains(dependency))
-						{
-							depList.Add(dependency);
-							depSet.Add(dependency);
-						}
-					}
-				}
 			}
 			depList.Clear();
 			depSet.Clear();
