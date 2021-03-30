@@ -42,21 +42,6 @@ namespace uTinyRipper.Converters
 						break;
 				}
 			}
-
-			List<SceneExportCollection> scenes = new List<SceneExportCollection>();
-			foreach (IExportCollection collection in collections)
-			{
-				foreach (Object asset in collection.Assets)
-				{
-#warning TODO: unique asset:collection (m_assetCollections.Add)
-					m_assetCollections[asset.AssetInfo] = collection;
-				}
-				if (collection is SceneExportCollection scene)
-				{
-					scenes.Add(scene);
-				}
-			}
-			m_scenes = scenes.ToArray();
 		}
 
 #warning TODO: get rid of IEnumerable. pass only main asset (issues: prefab, texture with sprites, animatorController)
@@ -163,14 +148,6 @@ namespace uTinyRipper.Converters
 				throw new Exception($"Scene '{name}' hasn't been found in build settings");
 			}
 
-			string fileName = SceneExportCollection.SceneIndexToFileName(index, Version);
-			foreach (SceneExportCollection scene in m_scenes)
-			{
-				if (scene.Name == fileName)
-				{
-					return scene.GUID;
-				}
-			}
 			return default;
 		}
 
@@ -371,6 +348,5 @@ namespace uTinyRipper.Converters
 
 		private readonly BuildSettings m_buildSettings;
 		private readonly TagManager m_tagManager;
-		private readonly SceneExportCollection[] m_scenes;
 	}
 }

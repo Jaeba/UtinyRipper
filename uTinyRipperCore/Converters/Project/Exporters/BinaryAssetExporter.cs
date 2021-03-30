@@ -48,10 +48,6 @@ namespace uTinyRipper.Converters
 		{
 			switch (asset.ClassID)
 			{
-				case ClassIDType.Texture2D:
-				case ClassIDType.Cubemap:
-					return new TextureExportCollection(this, (Texture2D)asset, false);
-
 				default:
 					return new AssetExportCollection(this, asset);
 			}

@@ -63,25 +63,8 @@ namespace uTinyRipper.Converters.Project
 						return IsEngineAsset(shader, version);
 					}
 
-				case ClassIDType.Texture2D:
-					{
-						Texture2D texture = (Texture2D)asset;
-						return builtinAsset.Parameter == texture.CompleteImageSize;
-					}
-
 				case ClassIDType.Shader:
 					return true;
-
-				case ClassIDType.Sprite:
-					{
-						Sprite sprite = (Sprite)asset;
-						Texture2D texture = sprite.RD.Texture.FindAsset(sprite.File);
-						if (texture == null)
-						{
-							return false;
-						}
-						return IsEngineAsset(texture, version);
-					}
 
 				default:
 					return false;
@@ -119,16 +102,6 @@ namespace uTinyRipper.Converters.Project
 					}
 					break;
 
-				case ClassIDType.Texture2D:
-					{
-						Texture2D texture = (Texture2D)asset;
-						if (EngineBuiltInAssets.TryGetTexture(texture.Name, version, out engineAsset))
-						{
-							return true;
-						}
-					}
-					break;
-
 				case ClassIDType.Mesh:
 					{
 						Mesh mesh = (Mesh)asset;
@@ -153,26 +126,6 @@ namespace uTinyRipper.Converters.Project
 					{
 						Font font = (Font)asset;
 						if (EngineBuiltInAssets.TryGetFont(font.Name, version, out engineAsset))
-						{
-							return true;
-						}
-					}
-					break;
-
-				case ClassIDType.Sprite:
-					{
-						Sprite sprite = (Sprite)asset;
-						if (EngineBuiltInAssets.TryGetSprite(sprite.Name, version, out engineAsset))
-						{
-							return true;
-						}
-					}
-					break;
-
-				case ClassIDType.LightmapParameters:
-					{
-						LightmapParameters lightParams = (LightmapParameters)asset;
-						if (EngineBuiltInAssets.TryGetLightmapParams(lightParams.Name, version, out engineAsset))
 						{
 							return true;
 						}

@@ -109,10 +109,6 @@ namespace uTinyRipper.Layout
 			{
 				context.AddString(layout.TagStringName);
 			}
-			if (layout.HasIcon && layout.IsIconFirst)
-			{
-				context.AddPPtr(context.Layout.Texture2D.Name, layout.IconName);
-			}
 			if (layout.HasNavMeshLayer)
 			{
 				context.AddUInt32(layout.NavMeshLayerName);
@@ -129,10 +125,6 @@ namespace uTinyRipper.Layout
 			if (layout.HasIsStatic)
 			{
 				context.AddBool(layout.IsStaticName);
-			}
-			if (layout.HasIcon && !layout.IsIconFirst)
-			{
-				context.AddPPtr(context.Layout.Texture2D.Name, layout.IconName);
 			}
 			context.EndChildren();
 		}

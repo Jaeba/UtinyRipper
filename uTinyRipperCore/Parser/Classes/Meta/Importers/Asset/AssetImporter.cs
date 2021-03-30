@@ -121,10 +121,6 @@ namespace uTinyRipper.Classes
 					}
 				}
 			}
-			if (HasPreview(reader.Version))
-			{
-				Preview.Read(reader);
-			}
 			if (HasHash(reader.Version))
 			{
 				OldHashIdentity.Read(reader);
@@ -171,10 +167,6 @@ namespace uTinyRipper.Classes
 					}
 				}
 			}
-			if (HasPreview(writer.Version))
-			{
-				Preview.Write(writer);
-			}
 			if (HasHash(writer.Version))
 			{
 				OldHashIdentity.Write(writer);
@@ -200,11 +192,6 @@ namespace uTinyRipper.Classes
 			foreach (PPtr<Object> asset in base.FetchDependencies(context))
 			{
 				yield return asset;
-			}
-
-			if (HasPreview(context.Version))
-			{
-				yield return context.FetchDependency(Preview, PreviewName);
 			}
 			if (HasExternalObjects(context.Version))
 			{
@@ -239,10 +226,6 @@ namespace uTinyRipper.Classes
 			if (HasUsedFileIDs(container.ExportVersion))
 			{
 				node.Add(UsedFileIDsName, UsedFileIDs.ExportYAML(false));
-			}
-			if (HasPreview(container.ExportVersion))
-			{
-				node.Add(PreviewName, Preview.ExportYAML(container));
 			}
 			if (HasHash(container.ExportVersion))
 			{
@@ -346,7 +329,6 @@ namespace uTinyRipper.Classes
 		public const string OldHashIdentityName = "m_OldHashIdentity";
 		public const string NewHashIdentityName = "m_NewHashIdentity";
 
-		public PPtr<Texture2D> Preview;
 		public MdFour OldHashIdentity;
 		public MdFour NewHashIdentity;
 	}

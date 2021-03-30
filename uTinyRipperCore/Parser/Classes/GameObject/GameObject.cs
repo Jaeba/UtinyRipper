@@ -173,10 +173,6 @@ namespace uTinyRipper.Classes
 			{
 				TagString = reader.ReadString();
 			}
-			if (layout.HasIcon && layout.IsIconFirst)
-			{
-				Icon.Read(reader);
-			}
 			if (layout.HasNavMeshLayer)
 			{
 				NavMeshLayer = reader.ReadUInt32();
@@ -197,10 +193,6 @@ namespace uTinyRipper.Classes
 			if (layout.HasIsStatic)
 			{
 				IsStatic = reader.ReadBoolean();
-			}
-			if (layout.HasIcon && !layout.IsIconFirst)
-			{
-				Icon.Read(reader);
 			}
 #endif
 		}
@@ -238,10 +230,6 @@ namespace uTinyRipper.Classes
 			{
 				writer.Write(TagString);
 			}
-			if (layout.HasIcon && layout.IsIconFirst)
-			{
-				Icon.Write(writer);
-			}
 			if (layout.HasNavMeshLayer)
 			{
 				writer.Write(NavMeshLayer);
@@ -262,10 +250,6 @@ namespace uTinyRipper.Classes
 			if (layout.HasIsStatic)
 			{
 				writer.Write(IsStatic);
-			}
-			if (layout.HasIcon && !layout.IsIconFirst)
-			{
-				Icon.Write(writer);
 			}
 #endif
 		}
@@ -336,10 +320,6 @@ namespace uTinyRipper.Classes
 				node.Add(layout.TagStringName, TagString);
 			}
 
-			if (layout.HasIcon && layout.IsIconFirst)
-			{
-				node.Add(layout.IconName, Icon.ExportYAML(container));
-			}
 			if (layout.HasNavMeshLayer)
 			{
 				node.Add(layout.NavMeshLayerName, NavMeshLayer);
@@ -356,10 +336,6 @@ namespace uTinyRipper.Classes
 			if (layout.HasIsStatic)
 			{
 				node.Add(layout.IsStaticName, IsStatic);
-			}
-			if (layout.HasIcon && !layout.IsIconFirst)
-			{
-				node.Add(layout.IconName, Icon.ExportYAML(container));
 			}
 			return node;
 		}
@@ -452,8 +428,6 @@ namespace uTinyRipper.Classes
 			get => StaticEditorFlags != 0;
 			set => StaticEditorFlags = value ? uint.MaxValue : 0;
 		}
-
-		public PPtr<Texture2D> Icon;
 #else
 		private bool IsStatic => false;
 		private PPtr<Texture2D> Icon => default;

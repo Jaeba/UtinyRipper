@@ -58,8 +58,6 @@ namespace uTinyRipper.Classes
 			{
 				ExecutionOrder = reader.ReadInt16();
 				reader.AlignStream();
-
-				Icon = reader.ReadAsset<PPtr<Texture2D>>();
 			}
 
 			PostRead(reader);
@@ -77,8 +75,6 @@ namespace uTinyRipper.Classes
 			{
 				writer.Write(ExecutionOrder);
 				writer.AlignStream();
-
-				Icon.Write(writer);
 			}
 
 			PostWrite(writer);
@@ -95,7 +91,6 @@ namespace uTinyRipper.Classes
 			if (HasExecutionOrder(container.ExportVersion))
 			{
 				node.Add(ExecutionOrderName, ExecutionOrder);
-				node.Add(IconName, Icon.ExportYAML(container));
 			}
 			PostExportYAML(container, node);
 			return node;
@@ -106,11 +101,6 @@ namespace uTinyRipper.Classes
 		public Dictionary<string, PPtr<Object>> DefaultReferences { get; set; }
 		public short ExecutionOrder { get; set; }
 		// map to Preview field just to reduce structure size. also they has same meaning
-		public PPtr<Texture2D> Icon
-		{
-			get => Preview;
-			set => Preview = value;
-		}
 
 		protected override bool IncludesIDToName => false;
 

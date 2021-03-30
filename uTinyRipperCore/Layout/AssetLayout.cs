@@ -29,7 +29,6 @@ namespace uTinyRipper.Layout
 			Object = new ObjectLayout(info);
 			Prefab = new PrefabLayout(info);
 			PrefabInstance = new PrefabInstanceLayout(info);
-			Texture2D = new Texture2DLayout(info);
 			Transform = new TransformLayout(info);
 
 			ClassNames = CreateClassNames();
@@ -80,7 +79,6 @@ namespace uTinyRipper.Layout
 		public ObjectLayout Object { get; }
 		public PrefabLayout Prefab { get; }
 		public PrefabInstanceLayout PrefabInstance { get; }
-		public Texture2DLayout Texture2D { get; }
 		public TransformLayout Transform { get; }
 
 		public string TypelessdataName => "_typelessdata";

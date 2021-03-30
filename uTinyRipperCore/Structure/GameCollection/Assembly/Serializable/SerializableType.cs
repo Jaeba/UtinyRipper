@@ -72,8 +72,6 @@ namespace uTinyRipper.Game.Assembly
 					return new Gradient();
 				case RectOffsetName:
 					return new RectOffset();
-				case GUIStyleName:
-					return new GUIStyle();
 
 				case PropertyNameName:
 					return new PropertyName();

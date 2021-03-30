@@ -35,10 +35,7 @@ namespace uTinyRipper.Converters
 				instance.TagString = GetTagString(container, origin);
 			}
 #if UNIVERSAL
-			if (layout.HasIcon)
-			{
-				instance.Icon = origin.Icon;
-			}
+			
 			if (layout.HasNavMeshLayer)
 			{
 				instance.NavMeshLayer = origin.NavMeshLayer;

@@ -154,7 +154,6 @@ namespace uTinyRipper.Classes
 			{
 				RenderingPath = (RenderingPath)reader.ReadInt32();
 			}
-			TargetTexture.Read(reader);
 			if (HasTargetDisplay(reader.Version))
 			{
 				TargetDisplay = reader.ReadInt32();
@@ -204,8 +203,6 @@ namespace uTinyRipper.Classes
 			{
 				yield return asset;
 			}
-			
-			yield return context.FetchDependency(TargetTexture, TargetTextureName);
 		}
 
 		protected override YAMLMappingNode ExportYAMLRoot(IExportContainer container)
@@ -246,7 +243,6 @@ namespace uTinyRipper.Classes
 			node.Add(DepthName, Depth);
 			node.Add(CullingMaskName, CullingMask.ExportYAML(container));
 			node.Add(RenderingPathName, (int)RenderingPath);
-			node.Add(TargetTextureName, TargetTexture.ExportYAML(container));
 			node.Add(TargetDisplayName, TargetDisplay);
 			node.Add(TargetEyeName, (int)TargetEye);
 			node.Add(HDRName, HDR);
@@ -331,6 +327,5 @@ namespace uTinyRipper.Classes
 		public Vector2f LensShift;
 		public Rectf NormalizedViewPortRect;
 		public BitField CullingMask;
-		public PPtr<RenderTexture> TargetTexture;
 	}
 }

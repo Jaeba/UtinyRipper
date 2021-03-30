@@ -121,9 +121,6 @@ namespace uTinyRipper.Converters
 				case SerializableType.RectOffsetName:
 					RectOffsetLayout.GenerateTypeTree(context, name);
 					break;
-				case SerializableType.GUIStyleName:
-					GUIStyleLayout.GenerateTypeTree(context, name);
-					break;
 				case SerializableType.PropertyNameName:
 					PropertyNameLayout.GenerateTypeTree(context, name);
 					break;

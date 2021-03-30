@@ -10,7 +10,6 @@
 			ColorRGBA32 = new ColorRGBA32Layout(info);
 			ColorRGBAf = new ColorRGBAfLayout(info);
 			Gradient = new GradientLayout(info);
-			GUIStyle = new GUIStyleLayout(info);
 			LayerMask = new LayerMaskLayout(info);
 			Matrix4x4f = new Matrix4x4fLayout(info);
 			Quaternionf = new QuaternionfLayout(info);
@@ -29,7 +28,6 @@
 		public ColorRGBA32Layout ColorRGBA32 { get; }
 		public ColorRGBAfLayout ColorRGBAf { get; }
 		public GradientLayout Gradient { get; }
-		public GUIStyleLayout GUIStyle { get; }
 		public LayerMaskLayout LayerMask { get; }
 		public Matrix4x4fLayout Matrix4x4f { get; }
 		public QuaternionfLayout Quaternionf { get; }

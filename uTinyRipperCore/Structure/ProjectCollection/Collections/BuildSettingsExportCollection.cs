@@ -21,10 +21,7 @@ namespace uTinyRipper.Project
 		{
 			EditorBuildSettings = EditorBuildSettings.CreateVirtualInstance(virtualFile);
 			EditorSettings = EditorSettings.CreateVirtualInstance(virtualFile);
-			if (!NavMeshProjectSettings.HasNavMeshProjectSettings(asset.File.Version))
-			{
-				NavMeshProjectSettings = NavMeshProjectSettings.CreateVirtualInstance(virtualFile);
-			}
+			
 			if (!NetworkManager.HasNetworkManager(asset.File.Version))
 			{
 				NetworkManager = NetworkManager.CreateVirtualInstance(virtualFile);
@@ -60,13 +57,6 @@ namespace uTinyRipper.Project
 
 			AssetExporter.Export(container, EditorSettings, filePath);
 
-			if (NavMeshProjectSettings != null)
-			{
-				fileName = $"{NavMeshProjectSettings.ExportPath}.asset";
-				filePath = Path.Combine(subPath, fileName);
-
-				AssetExporter.Export(container, NavMeshProjectSettings, filePath);
-			}
 			if (NetworkManager != null)
 			{
 				fileName = $"{NetworkManager.ExportPath}.asset";
@@ -110,8 +100,6 @@ namespace uTinyRipper.Project
 					return asset == EditorBuildSettings;
 				case ClassIDType.EditorSettings:
 					return asset == EditorSettings;
-				case ClassIDType.NavMeshProjectSettings:
-					return asset == NavMeshProjectSettings;
 				case ClassIDType.UnityConnectSettings:
 					return asset == UnityConnectSettings;
 				case ClassIDType.QualitySettings:
@@ -134,10 +122,6 @@ namespace uTinyRipper.Project
 				yield return Asset;
 				yield return EditorBuildSettings;
 				yield return EditorSettings;
-				if (NavMeshProjectSettings != null)
-				{
-					yield return NavMeshProjectSettings;
-				}
 				if (NetworkManager != null)
 				{
 					yield return NetworkManager;
@@ -155,7 +139,6 @@ namespace uTinyRipper.Project
 
 		public EditorBuildSettings EditorBuildSettings { get; }
 		public EditorSettings EditorSettings { get; }
-		public NavMeshProjectSettings NavMeshProjectSettings { get; }
 		public NetworkManager NetworkManager { get; }
 		public UnityConnectSettings UnityConnectSettings { get; }
 		public QualitySettings QualitySettings { get; }

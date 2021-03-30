@@ -42,18 +42,10 @@ namespace uTinyRipper
 					return new Camera(assetInfo);
 				case ClassIDType.Material:
 					return new Material(assetInfo);
-				case ClassIDType.MeshRenderer:
-					return new MeshRenderer(assetInfo);
-				case ClassIDType.Texture2D:
-					return new Texture2D(assetInfo);
-				case ClassIDType.OcclusionCullingSettings:
-					return new OcclusionCullingSettings(assetInfo);
 				case ClassIDType.GraphicsSettings:
 					return new GraphicsSettings(assetInfo);
 				case ClassIDType.MeshFilter:
 					return new MeshFilter(assetInfo);
-				case ClassIDType.OcclusionPortal:
-					return new OcclusionPortal(assetInfo);
 				case ClassIDType.Mesh:
 					return new Mesh(assetInfo);
 				case ClassIDType.Skybox:
@@ -66,20 +58,12 @@ namespace uTinyRipper
 					return new TextAsset(assetInfo);
 				case ClassIDType.TagManager:
 					return new TagManager(assetInfo);
-				case ClassIDType.RenderTexture:
-					return new RenderTexture(assetInfo);
-				case ClassIDType.Cubemap:
-					return new Cubemap(assetInfo);
 				case ClassIDType.Avatar:
 					return new Avatar(assetInfo);
 				case ClassIDType.GUILayer:
 					return new GUILayer(assetInfo);
-				case ClassIDType.TrailRenderer:
-					return new TrailRenderer(assetInfo);
 				case ClassIDType.TextMesh:
 					return new TextMesh(assetInfo);
-				case ClassIDType.RenderSettings:
-					return new RenderSettings(assetInfo);
 				case ClassIDType.Light:
 					return new Light(assetInfo);
 				case ClassIDType.MonoBehaviour:
@@ -88,20 +72,14 @@ namespace uTinyRipper
 					return new MonoScript(assetInfo);
 				case ClassIDType.MonoManager:
 					return new MonoManager(assetInfo);
-				case ClassIDType.Texture3D:
-					return new Texture3D(assetInfo);
 				case ClassIDType.FlareLayer:
 					return new FlareLayer(assetInfo);
-				case ClassIDType.NavMeshProjectSettings:
-					return new NavMeshProjectSettings(assetInfo);
 				case ClassIDType.Font:
 					return new Font(assetInfo);
 				case ClassIDType.GUITexture:
 					return new GUITexture(assetInfo);
 				case ClassIDType.GUIText:
 					return new GUIText(assetInfo);
-				case ClassIDType.SkinnedMeshRenderer:
-					return new SkinnedMeshRenderer(assetInfo);
 				case ClassIDType.BuildSettings:
 					return new BuildSettings(assetInfo);
 				case ClassIDType.AssetBundle:
@@ -112,36 +90,14 @@ namespace uTinyRipper
 					return new NetworkManager(assetInfo);
 				case ClassIDType.PreloadData:
 					return new PreloadData(assetInfo);
-				case ClassIDType.LightmapSettings:
-					return new LightmapSettings(assetInfo);
 				case ClassIDType.EditorSettings:
 					return new EditorSettings(assetInfo);
 				case ClassIDType.OffMeshLink:
 					return new OffMeshLink(assetInfo);
-				case ClassIDType.OcclusionArea:
-					return new OcclusionArea(assetInfo);
-				case ClassIDType.NavMeshObsolete:
-					return new NavMeshObsolete(assetInfo);
-				case ClassIDType.NavMeshAgent:
-					return new NavMeshAgent(assetInfo);
-				case ClassIDType.NavMeshSettings:
-					return new NavMeshSettings(assetInfo);
-				case ClassIDType.ParticleSystem:
-					return new ParticleSystem(assetInfo);
-				case ClassIDType.ParticleSystemRenderer:
-					return new ParticleSystemRenderer(assetInfo);
 				case ClassIDType.ShaderVariantCollection:
 					return new ShaderVariantCollection(assetInfo);
-				case ClassIDType.LODGroup:
-					return new LODGroup(assetInfo);
-				case ClassIDType.NavMeshObstacle:
-					return new NavMeshObstacle(assetInfo);
 				case ClassIDType.SortingGroup:
 					return new SortingGroup(assetInfo);
-				case ClassIDType.SpriteRenderer:
-					return new SpriteRenderer(assetInfo);
-				case ClassIDType.Sprite:
-					return new Sprite(assetInfo);
 				case ClassIDType.ReflectionProbe:
 					return new ReflectionProbe(assetInfo);
 				case ClassIDType.CanvasRenderer:
@@ -154,19 +110,11 @@ namespace uTinyRipper
 					return new CanvasGroup(assetInfo);
 				case ClassIDType.ClusterInputManager:
 					return new ClusterInputManager(assetInfo);
-				case ClassIDType.NavMeshData:
-					return new NavMeshData(assetInfo);
 				case ClassIDType.UnityConnectSettings:
 					return new UnityConnectSettings(assetInfo);
-				case ClassIDType.ParticleSystemForceField:
-					return new ParticleSystemForceField(assetInfo);
-				case ClassIDType.OcclusionCullingData:
-					return new OcclusionCullingData(assetInfo);
 
 				case ClassIDType.PrefabInstance:
 					return new PrefabInstance(assetInfo);
-				case ClassIDType.TextureImporter:
-					return new TextureImporter(assetInfo);
 				case ClassIDType.AvatarMask:
 				case ClassIDType.AvatarMaskOld:
 					return new AvatarMask(assetInfo);
@@ -188,15 +136,6 @@ namespace uTinyRipper
 					return new ASTCImporter(assetInfo);
 				case ClassIDType.KTXImporter:
 					return new KTXImporter(assetInfo);
-				case ClassIDType.IHVImageFormatImporter:
-					return new IHVImageFormatImporter(assetInfo);
-				case ClassIDType.LightmapParameters:
-					return new LightmapParameters(assetInfo);
-				case ClassIDType.LightingDataAsset:
-					return new LightingDataAsset(assetInfo);
-
-				case ClassIDType.SpriteAtlas:
-					return new SpriteAtlas(assetInfo);
 				default:
 					return null;
 			}
