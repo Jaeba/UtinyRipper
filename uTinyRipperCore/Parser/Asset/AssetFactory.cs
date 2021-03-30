@@ -112,8 +112,6 @@ namespace uTinyRipper
 					return new NetworkManager(assetInfo);
 				case ClassIDType.PreloadData:
 					return new PreloadData(assetInfo);
-				case ClassIDType.MovieTexture:
-					return new MovieTexture(assetInfo);
 				case ClassIDType.LightmapSettings:
 					return new LightmapSettings(assetInfo);
 				case ClassIDType.EditorSettings:
