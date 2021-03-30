@@ -29,10 +29,6 @@ namespace uTinyRipper.Project
 			{
 				NetworkManager = NetworkManager.CreateVirtualInstance(virtualFile);
 			}
-			if (!Physics2DSettings.HasPhysics2DSettings(asset.File.Version))
-			{
-				Physics2DSettings = Physics2DSettings.CreateVirtualInstance(virtualFile);
-			}
 			if (!UnityConnectSettings.HasUnityConnectSettings(asset.File.Version))
 			{
 				UnityConnectSettings = UnityConnectSettings.CreateVirtualInstance(virtualFile);
@@ -78,13 +74,6 @@ namespace uTinyRipper.Project
 
 				AssetExporter.Export(container, NetworkManager, filePath);
 			}
-			if (Physics2DSettings != null)
-			{
-				fileName = $"{Physics2DSettings.ExportPath}.asset";
-				filePath = Path.Combine(subPath, fileName);
-
-				AssetExporter.Export(container, Physics2DSettings, filePath);
-			}
 			if (UnityConnectSettings != null)
 			{
 				fileName = $"{UnityConnectSettings.ExportPath}.asset";
@@ -123,10 +112,6 @@ namespace uTinyRipper.Project
 					return asset == EditorSettings;
 				case ClassIDType.NavMeshProjectSettings:
 					return asset == NavMeshProjectSettings;
-				case ClassIDType.NetworkManager:
-					return asset == Physics2DSettings;
-				case ClassIDType.Physics2DSettings:
-					return asset == EditorBuildSettings;
 				case ClassIDType.UnityConnectSettings:
 					return asset == UnityConnectSettings;
 				case ClassIDType.QualitySettings:
@@ -157,10 +142,6 @@ namespace uTinyRipper.Project
 				{
 					yield return NetworkManager;
 				}
-				if(Physics2DSettings != null)
-				{
-					yield return Physics2DSettings;
-				}
 				if (UnityConnectSettings != null)
 				{
 					yield return UnityConnectSettings;
@@ -176,7 +157,6 @@ namespace uTinyRipper.Project
 		public EditorSettings EditorSettings { get; }
 		public NavMeshProjectSettings NavMeshProjectSettings { get; }
 		public NetworkManager NetworkManager { get; }
-		public Physics2DSettings Physics2DSettings { get; }
 		public UnityConnectSettings UnityConnectSettings { get; }
 		public QualitySettings QualitySettings { get; }
 	}

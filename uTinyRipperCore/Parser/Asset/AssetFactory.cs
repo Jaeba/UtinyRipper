@@ -38,8 +38,6 @@ namespace uTinyRipper
 					return new TimeManager(assetInfo);
 				case ClassIDType.InputManager:
 					return new InputManager(assetInfo);
-				case ClassIDType.Physics2DSettings:
-					return new Physics2DSettings(assetInfo);
 				case ClassIDType.Camera:
 					return new Camera(assetInfo);
 				case ClassIDType.Material:
@@ -66,26 +64,6 @@ namespace uTinyRipper
 					return new Shader(assetInfo);
 				case ClassIDType.TextAsset:
 					return new TextAsset(assetInfo);
-				case ClassIDType.PhysicsManager:
-					return new PhysicsManager(assetInfo);
-				case ClassIDType.CircleCollider2D:
-					return new CircleCollider2D(assetInfo);
-				case ClassIDType.PolygonCollider2D:
-					return new PolygonCollider2D(assetInfo);
-				case ClassIDType.BoxCollider2D:
-					return new BoxCollider2D(assetInfo);
-				case ClassIDType.PhysicsMaterial2D:
-					return new PhysicsMaterial2D(assetInfo);
-				case ClassIDType.MeshCollider:
-					return new MeshCollider(assetInfo);
-				case ClassIDType.BoxCollider:
-					return new BoxCollider(assetInfo);
-				case ClassIDType.CompositeCollider2D:
-					return new CompositeCollider2D(assetInfo);
-				case ClassIDType.EdgeCollider2D:
-					return new EdgeCollider2D(assetInfo);
-				case ClassIDType.CapsuleCollider2D:
-					return new CapsuleCollider2D(assetInfo);
 				case ClassIDType.TagManager:
 					return new TagManager(assetInfo);
 				case ClassIDType.RenderTexture:
@@ -112,8 +90,6 @@ namespace uTinyRipper
 					return new MonoManager(assetInfo);
 				case ClassIDType.Texture3D:
 					return new Texture3D(assetInfo);
-				case ClassIDType.NewAnimationTrack:
-					return new NewAnimationTrack(assetInfo);
 				case ClassIDType.FlareLayer:
 					return new FlareLayer(assetInfo);
 				case ClassIDType.NavMeshProjectSettings:
@@ -124,22 +100,12 @@ namespace uTinyRipper
 					return new GUITexture(assetInfo);
 				case ClassIDType.GUIText:
 					return new GUIText(assetInfo);
-				case ClassIDType.PhysicMaterial:
-					return new PhysicMaterial(assetInfo);
-				case ClassIDType.SphereCollider:
-					return new SphereCollider(assetInfo);
-				case ClassIDType.CapsuleCollider:
-					return new CapsuleCollider(assetInfo);
 				case ClassIDType.SkinnedMeshRenderer:
 					return new SkinnedMeshRenderer(assetInfo);
 				case ClassIDType.BuildSettings:
 					return new BuildSettings(assetInfo);
-				case ClassIDType.CharacterController:
-					return new CharacterController(assetInfo);
 				case ClassIDType.AssetBundle:
 					return new AssetBundle(assetInfo);
-				case ClassIDType.WheelCollider:
-					return new WheelCollider(assetInfo);
 				case ClassIDType.ResourceManager:
 					return new ResourceManager(assetInfo);
 				case ClassIDType.NetworkManager:
@@ -148,10 +114,6 @@ namespace uTinyRipper
 					return new PreloadData(assetInfo);
 				case ClassIDType.MovieTexture:
 					return new MovieTexture(assetInfo);
-				case ClassIDType.TerrainCollider:
-					return new TerrainCollider(assetInfo);
-				case ClassIDType.TerrainData:
-					return new TerrainData(assetInfo);
 				case ClassIDType.LightmapSettings:
 					return new LightmapSettings(assetInfo);
 				case ClassIDType.EditorSettings:
@@ -184,8 +146,6 @@ namespace uTinyRipper
 					return new Sprite(assetInfo);
 				case ClassIDType.ReflectionProbe:
 					return new ReflectionProbe(assetInfo);
-				case ClassIDType.Terrain:
-					return new Terrain(assetInfo);
 				case ClassIDType.CanvasRenderer:
 					return new CanvasRenderer(assetInfo);
 				case ClassIDType.Canvas:
@@ -239,8 +199,6 @@ namespace uTinyRipper
 
 				case ClassIDType.SpriteAtlas:
 					return new SpriteAtlas(assetInfo);
-				case ClassIDType.TerrainLayer:
-					return new TerrainLayer(assetInfo);
 				default:
 					return null;
 			}

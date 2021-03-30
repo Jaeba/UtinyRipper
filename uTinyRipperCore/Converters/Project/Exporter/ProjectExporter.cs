@@ -40,101 +40,6 @@ namespace uTinyRipper.Converters
 			OverrideDummyExporter(ClassIDType.IHVImageFormatImporter, false, false);
 			OverrideDummyExporter(ClassIDType.SpriteAtlas, false, false);
 
-			OverrideYamlExporter(ClassIDType.GameObject);
-			OverrideYamlExporter(ClassIDType.Transform);
-			OverrideYamlExporter(ClassIDType.TimeManager);
-			OverrideYamlExporter(ClassIDType.InputManager);
-			OverrideYamlExporter(ClassIDType.Physics2DSettings);
-			OverrideYamlExporter(ClassIDType.Camera);
-			OverrideYamlExporter(ClassIDType.Material);
-			OverrideYamlExporter(ClassIDType.MeshRenderer);
-			OverrideYamlExporter(ClassIDType.Texture2D);
-			OverrideYamlExporter(ClassIDType.OcclusionCullingSettings);
-			OverrideYamlExporter(ClassIDType.GraphicsSettings);
-			OverrideYamlExporter(ClassIDType.MeshFilter);
-			OverrideYamlExporter(ClassIDType.OcclusionPortal);
-			OverrideYamlExporter(ClassIDType.Mesh);
-			OverrideYamlExporter(ClassIDType.Skybox);
-			OverrideYamlExporter(ClassIDType.QualitySettings);
-			OverrideYamlExporter(ClassIDType.TextAsset);
-			OverrideYamlExporter(ClassIDType.PhysicsManager);
-			OverrideYamlExporter(ClassIDType.CircleCollider2D);
-			OverrideYamlExporter(ClassIDType.PolygonCollider2D);
-			OverrideYamlExporter(ClassIDType.BoxCollider2D);
-			OverrideYamlExporter(ClassIDType.PhysicsMaterial2D);
-			OverrideYamlExporter(ClassIDType.MeshCollider);
-			OverrideYamlExporter(ClassIDType.BoxCollider);
-			OverrideYamlExporter(ClassIDType.CompositeCollider2D);
-			OverrideYamlExporter(ClassIDType.EdgeCollider2D);
-			OverrideYamlExporter(ClassIDType.CapsuleCollider2D);
-			OverrideYamlExporter(ClassIDType.AnimationClip);
-			OverrideYamlExporter(ClassIDType.TagManager);
-			OverrideYamlExporter(ClassIDType.AudioListener);
-			OverrideYamlExporter(ClassIDType.AudioSource);
-			OverrideYamlExporter(ClassIDType.RenderTexture);
-			OverrideYamlExporter(ClassIDType.Cubemap);
-			OverrideYamlExporter(ClassIDType.Avatar);
-			OverrideYamlExporter(ClassIDType.AnimatorController);
-			OverrideYamlExporter(ClassIDType.GUILayer);
-			OverrideYamlExporter(ClassIDType.Animator);
-			OverrideYamlExporter(ClassIDType.TextMesh);
-			OverrideYamlExporter(ClassIDType.RenderSettings);
-			OverrideYamlExporter(ClassIDType.Light);
-			OverrideYamlExporter(ClassIDType.Animation);
-			OverrideYamlExporter(ClassIDType.TrailRenderer);
-			OverrideYamlExporter(ClassIDType.MonoBehaviour);
-			OverrideYamlExporter(ClassIDType.Texture3D);
-			OverrideYamlExporter(ClassIDType.NewAnimationTrack);
-			OverrideYamlExporter(ClassIDType.FlareLayer);
-			OverrideYamlExporter(ClassIDType.NavMeshProjectSettings);
-			OverrideYamlExporter(ClassIDType.Font);
-			OverrideYamlExporter(ClassIDType.GUITexture);
-			OverrideYamlExporter(ClassIDType.GUIText);
-			OverrideYamlExporter(ClassIDType.PhysicMaterial);
-			OverrideYamlExporter(ClassIDType.SphereCollider);
-			OverrideYamlExporter(ClassIDType.CapsuleCollider);
-			OverrideYamlExporter(ClassIDType.SkinnedMeshRenderer);
-			OverrideYamlExporter(ClassIDType.BuildSettings);
-			OverrideYamlExporter(ClassIDType.CharacterController);
-			OverrideYamlExporter(ClassIDType.WheelCollider);
-			OverrideYamlExporter(ClassIDType.NetworkManager);
-			OverrideYamlExporter(ClassIDType.MovieTexture);
-			OverrideYamlExporter(ClassIDType.TerrainCollider);
-			OverrideYamlExporter(ClassIDType.TerrainData);
-			OverrideYamlExporter(ClassIDType.LightmapSettings);
-			OverrideYamlExporter(ClassIDType.AudioReverbZone);
-			OverrideYamlExporter(ClassIDType.OffMeshLink);
-			OverrideYamlExporter(ClassIDType.OcclusionArea);
-			OverrideYamlExporter(ClassIDType.NavMeshObsolete);
-			OverrideYamlExporter(ClassIDType.NavMeshAgent);
-			OverrideYamlExporter(ClassIDType.NavMeshSettings);
-			OverrideYamlExporter(ClassIDType.ParticleSystem);
-			OverrideYamlExporter(ClassIDType.ParticleSystemRenderer);
-			OverrideYamlExporter(ClassIDType.ShaderVariantCollection);
-			OverrideYamlExporter(ClassIDType.LODGroup);
-			OverrideYamlExporter(ClassIDType.NavMeshObstacle);
-			OverrideYamlExporter(ClassIDType.SortingGroup);
-			OverrideYamlExporter(ClassIDType.SpriteRenderer);
-			OverrideYamlExporter(ClassIDType.ReflectionProbe);
-			OverrideYamlExporter(ClassIDType.Terrain);
-			OverrideYamlExporter(ClassIDType.AnimatorOverrideController);
-			OverrideYamlExporter(ClassIDType.CanvasRenderer);
-			OverrideYamlExporter(ClassIDType.Canvas);
-			OverrideYamlExporter(ClassIDType.RectTransform);
-			OverrideYamlExporter(ClassIDType.CanvasGroup);
-			OverrideYamlExporter(ClassIDType.ClusterInputManager);
-			OverrideYamlExporter(ClassIDType.NavMeshData);
-			OverrideYamlExporter(ClassIDType.UnityConnectSettings);
-			OverrideYamlExporter(ClassIDType.AvatarMask);
-			OverrideYamlExporter(ClassIDType.ParticleSystemForceField);
-			OverrideYamlExporter(ClassIDType.OcclusionCullingData);
-			OverrideYamlExporter(ClassIDType.PrefabInstance);
-			OverrideYamlExporter(ClassIDType.AvatarMaskOld);
-			OverrideYamlExporter(ClassIDType.SceneAsset);
-			OverrideYamlExporter(ClassIDType.LightmapParameters);
-			OverrideYamlExporter(ClassIDType.SpriteAtlas);
-			OverrideYamlExporter(ClassIDType.TerrainLayer);
-
 			OverrideBinaryExporter(ClassIDType.Shader);
 			OverrideBinaryExporter(ClassIDType.AudioClip);
 
@@ -160,12 +65,6 @@ namespace uTinyRipper.Converters
 			DummyExporter.SetUpClassType(classType, isEmptyCollection, isMetaType);
 			OverrideExporter(classType, DummyExporter);
 		}
-
-		public void OverrideYamlExporter(ClassIDType classType)
-		{
-			OverrideExporter(classType, YamlExporter);
-		}
-
 		public void OverrideBinaryExporter(ClassIDType classType)
 		{
 			OverrideExporter(classType, BinExporter);
@@ -291,8 +190,6 @@ namespace uTinyRipper.Converters
 			}
 			throw new Exception($"There is no exporter that can handle '{asset}'");
 		}
-
-		private YAMLAssetExporter YamlExporter { get; } = new YAMLAssetExporter();
 		private BinaryAssetExporter BinExporter { get; } = new BinaryAssetExporter();
 		private DummyAssetExporter DummyExporter { get; } = new DummyAssetExporter();
 		private ScriptAssetExporter ScriptExporter { get; } = new ScriptAssetExporter();
