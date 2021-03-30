@@ -50,7 +50,6 @@ namespace uTinyRipper
 			CollectSerializedGameFiles(root, files);
 			CollectWebFiles(root, files);
 			CollectAssetBundles(root, files);
-			CollectAssembliesSafe(root, assemblies);
 			if (files.Count != count)
 			{
 				dataPathes.Add(root.FullName);
@@ -86,24 +85,6 @@ namespace uTinyRipper
 							}
 						}
 						break;
-				}
-			}
-		}
-
-		private void CollectAssembliesSafe(DirectoryInfo root, IDictionary<string, string> assemblies)
-		{
-			foreach (FileInfo file in root.EnumerateFiles())
-			{
-				if (AssemblyManager.IsAssembly(file.Name))
-				{
-					if (assemblies.ContainsKey(file.Name))
-					{
-						Logger.Log(LogType.Warning, LogCategory.Import, $"Duplicate assemblies found: '{assemblies[file.Name]}' & '{file.FullName}'");
-					}
-					else
-					{
-						assemblies.Add(file.Name, file.FullName);
-					}
 				}
 			}
 		}

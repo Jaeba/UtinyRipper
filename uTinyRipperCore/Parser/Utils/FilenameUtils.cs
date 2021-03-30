@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using uTinyRipper.Game.Assembly.Mono;
 
 namespace uTinyRipper
 {
@@ -81,16 +80,6 @@ namespace uTinyRipper
 			if (IsAssemblyIdentifier(assembly))
 			{
 				assembly = $"Assembly - {assembly}";
-			}
-			assembly = FixAssemblyEndian(assembly);
-			return assembly;
-		}
-
-		public static string FixAssemblyEndian(string assembly)
-		{
-			if (assembly.EndsWith(MonoManager.AssemblyExtension, StringComparison.Ordinal))
-			{
-				return assembly.Substring(0, assembly.Length - MonoManager.AssemblyExtension.Length);
 			}
 			return assembly;
 		}

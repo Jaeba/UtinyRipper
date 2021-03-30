@@ -199,7 +199,6 @@ namespace uTinyRipper.Classes
 			YAMLMappingNode node = base.ExportYAMLRoot(container);
 			node.AddSerializedVersion(ToSerializedVersion(container.ExportVersion));
 			node.Add(CurrentQualityName, CurrentQuality);
-			node.Add(QualitySettingsName, QualitySettingss.ExportYAML(container));
 			node.Add(PerPlatformDefaultQualityName, GetPerPlatformDefaultQuality(container.Version, container.Flags).ExportYAML());
 			return node;
 		}

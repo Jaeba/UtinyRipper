@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using uTinyRipper.Converters.Script;
 using uTinyRipper.Game.Assembly;
-using uTinyRipper.Game.Assembly.Mono;
 using uTinyRipper.Layout;
 
 namespace uTinyRipper.Game
@@ -12,7 +10,7 @@ namespace uTinyRipper.Game
 	{
 		public AssemblyManager(ScriptingBackend backend, AssetLayout layout, Action<string> requestAssemblyCallback)
 		{
-			m_manager = backend == ScriptingBackend.Mono ? new MonoManager(this) : null;
+			m_manager = null;
 			Layout = layout;
 			m_requestAssemblyCallback = requestAssemblyCallback ?? throw new ArgumentNullException(nameof(requestAssemblyCallback));
 		}
@@ -20,24 +18,6 @@ namespace uTinyRipper.Game
 		~AssemblyManager()
 		{
 			Dispose(false);
-		}
-
-		public static bool IsAssembly(string fileName)
-		{
-			if (MonoManager.IsMonoAssembly(fileName))
-			{
-				return true;
-			}
-			return false;
-		}
-
-		public static string ToAssemblyName(string scopeName)
-		{
-			if (scopeName.EndsWith(MonoManager.AssemblyExtension, StringComparison.Ordinal))
-			{
-				return scopeName.Substring(0, scopeName.Length - MonoManager.AssemblyExtension.Length);
-			}
-			return scopeName;
 		}
 
 		public void Load(string filePath)
@@ -94,11 +74,6 @@ namespace uTinyRipper.Game
 				return type;
 			}
 			return m_manager.GetSerializableType(scriptID);
-		}
-
-		public ScriptExportType GetExportType(ScriptExportManager exportManager, ScriptIdentifier scriptID)
-		{
-			return m_manager.GetExportType(exportManager, scriptID);
 		}
 
 		public ScriptIdentifier GetScriptID(string assembly, string name)

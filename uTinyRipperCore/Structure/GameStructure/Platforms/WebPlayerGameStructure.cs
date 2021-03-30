@@ -33,7 +33,6 @@ namespace uTinyRipper
 			Files = files;
 
 			Dictionary<string, string> assemblies = new Dictionary<string, string>();
-			CollectMainAssemblies(m_root, assemblies);
 			Assemblies = assemblies;
 		}
 
@@ -64,11 +63,6 @@ namespace uTinyRipper
 			}
 			name = null;
 			return false;
-		}
-
-		public override ScriptingBackend GetScriptingBackend()
-		{
-			return ScriptingBackend.Mono;
 		}
 
 		public override string Name { get; }

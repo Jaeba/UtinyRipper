@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using uTinyRipper.Converters.Script;
 using uTinyRipper.Game.Assembly;
 
 namespace uTinyRipper.Game
@@ -15,7 +14,6 @@ namespace uTinyRipper.Game
 		bool IsPresent(ScriptIdentifier scriptID);
 		bool IsValid(ScriptIdentifier scriptID);
 		SerializableType GetSerializableType(ScriptIdentifier scriptID);
-		ScriptExportType GetExportType(ScriptExportManager exportManager, ScriptIdentifier scriptID);
 		ScriptIdentifier GetScriptID(string assembly, string name);
 		ScriptIdentifier GetScriptID(string assembly, string @namespace, string name);
 

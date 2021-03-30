@@ -21,29 +21,22 @@ namespace uTinyRipper.Converters
 		{
 			m_fileCollection = fileCollection;
 
-			OverrideDummyExporter(ClassIDType.MonoManager, true, false);
 			OverrideDummyExporter(ClassIDType.BuildSettings, false, false);
 			OverrideDummyExporter(ClassIDType.AssetBundle, true, false);
 			OverrideDummyExporter(ClassIDType.ResourceManager, true, false);
 			OverrideDummyExporter(ClassIDType.PreloadData, true, false);
 			OverrideDummyExporter(ClassIDType.EditorSettings, false, false);
-			OverrideDummyExporter(ClassIDType.Sprite, false, true);
 			OverrideDummyExporter(ClassIDType.TextureImporter, false, false);
 			OverrideDummyExporter(ClassIDType.DefaultAsset, false, false);
 			OverrideDummyExporter(ClassIDType.DefaultImporter, false, false);
 			OverrideDummyExporter(ClassIDType.NativeFormatImporter, false, false);
-			OverrideDummyExporter(ClassIDType.MonoImporter, false, false);
 			OverrideDummyExporter(ClassIDType.DDSImporter, false, false);
 			OverrideDummyExporter(ClassIDType.PVRImporter, false, false);
 			OverrideDummyExporter(ClassIDType.ASTCImporter, false, false);
 			OverrideDummyExporter(ClassIDType.KTXImporter, false, false);
 			OverrideDummyExporter(ClassIDType.IHVImageFormatImporter, false, false);
-			OverrideDummyExporter(ClassIDType.SpriteAtlas, false, false);
 
 			OverrideBinaryExporter(ClassIDType.Shader);
-			OverrideBinaryExporter(ClassIDType.AudioClip);
-
-			OverrideExporter(ClassIDType.MonoScript, ScriptExporter);
 		}
 
 		public void OverrideExporter(ClassIDType classType, IAssetExporter exporter)
@@ -192,7 +185,6 @@ namespace uTinyRipper.Converters
 		}
 		private BinaryAssetExporter BinExporter { get; } = new BinaryAssetExporter();
 		private DummyAssetExporter DummyExporter { get; } = new DummyAssetExporter();
-		private ScriptAssetExporter ScriptExporter { get; } = new ScriptAssetExporter();
 
 		private readonly Dictionary<ClassIDType, Stack<IAssetExporter>> m_exporters = new Dictionary<ClassIDType, Stack<IAssetExporter>>();
 

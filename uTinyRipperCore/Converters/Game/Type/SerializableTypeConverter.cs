@@ -22,9 +22,7 @@ namespace uTinyRipper.Converters
 
 		private static void GenerateTypeTree(TypeTreeContext context, SerializableType origin)
 		{
-			context.AddNode(nameof(MonoBehaviour), TypeTreeUtils.BaseName);
-			context.BeginChildren();
-			MonoBehaviourLayout.GenerateTypeTree(context);
+			context.BeginChildren(); // bad
 			GenerateFields(context, origin);
 			context.EndChildren();
 		}

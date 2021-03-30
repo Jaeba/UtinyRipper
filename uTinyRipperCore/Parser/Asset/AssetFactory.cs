@@ -30,67 +30,29 @@ namespace uTinyRipper
 		{
 			switch (assetInfo.ClassID)
 			{
-				case ClassIDType.GameObject:
-					return new GameObject(assetInfo);
-				case ClassIDType.Transform:
-					return new Transform(assetInfo);
 				case ClassIDType.TimeManager:
 					return new TimeManager(assetInfo);
 				case ClassIDType.InputManager:
 					return new InputManager(assetInfo);
 				case ClassIDType.Material:
 					return new Material(assetInfo);
-				case ClassIDType.Skybox:
-					return new Skybox(assetInfo);
 				case ClassIDType.QualitySettings:
 					return new QualitySettings(assetInfo);
 				case ClassIDType.Shader:
 					return new Shader(assetInfo);
 				case ClassIDType.TextAsset:
 					return new TextAsset(assetInfo);
-				case ClassIDType.TagManager:
-					return new TagManager(assetInfo);
-				case ClassIDType.GUILayer:
-					return new GUILayer(assetInfo);
-				case ClassIDType.MonoBehaviour:
-					return new MonoBehaviour(assetInfo);
-				case ClassIDType.MonoScript:
-					return new MonoScript(assetInfo);
-				case ClassIDType.MonoManager:
-					return new MonoManager(assetInfo);
-				case ClassIDType.FlareLayer:
-					return new FlareLayer(assetInfo);
-				case ClassIDType.GUITexture:
-					return new GUITexture(assetInfo);
-				case ClassIDType.BuildSettings:
-					return new BuildSettings(assetInfo);
 				case ClassIDType.AssetBundle:
 					return new AssetBundle(assetInfo);
 				case ClassIDType.ResourceManager:
 					return new ResourceManager(assetInfo);
-				case ClassIDType.NetworkManager:
-					return new NetworkManager(assetInfo);
 				case ClassIDType.PreloadData:
 					return new PreloadData(assetInfo);
-				case ClassIDType.EditorSettings:
-					return new EditorSettings(assetInfo);
-				case ClassIDType.OffMeshLink:
-					return new OffMeshLink(assetInfo);
 				case ClassIDType.ShaderVariantCollection:
 					return new ShaderVariantCollection(assetInfo);
-				case ClassIDType.SortingGroup:
-					return new SortingGroup(assetInfo);
-				case ClassIDType.ReflectionProbe:
-					return new ReflectionProbe(assetInfo);
-				case ClassIDType.RectTransform:
-					return new RectTransform(assetInfo);
-				case ClassIDType.CanvasGroup:
-					return new CanvasGroup(assetInfo);
 				case ClassIDType.UnityConnectSettings:
 					return new UnityConnectSettings(assetInfo);
 
-				case ClassIDType.PrefabInstance:
-					return new PrefabInstance(assetInfo);
 				case ClassIDType.DefaultAsset:
 					return new DefaultAsset(assetInfo);
 				case ClassIDType.DefaultImporter:

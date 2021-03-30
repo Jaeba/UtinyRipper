@@ -18,17 +18,10 @@ namespace uTinyRipper.Layout
 			Misc = new MiscLayoutCategory(info);
 			Serialized = new SerializedLayoutCategory(info);
 
-			Behaviour = new BehaviourLayout(info);
-			Component = new ComponentLayout(info);
 			EditorExtension = new EditorExtensionLayout(info);
-			GameObject = new GameObjectLayout(info);
-			MonoBehaviour = new MonoBehaviourLayout(info);
-			MonoScript = new MonoScriptLayout(info);
+
 			NamedObject = new NamedObjectLayout(info);
 			Object = new ObjectLayout(info);
-			Prefab = new PrefabLayout(info);
-			PrefabInstance = new PrefabInstanceLayout(info);
-			Transform = new TransformLayout(info);
 
 			ClassNames = CreateClassNames();
 		}
@@ -41,7 +34,6 @@ namespace uTinyRipper.Layout
 			{
 				names[classType] = classType.ToString();
 			}
-			names[ClassIDType.PrefabInstance] = PrefabInstance.Name;
 			return names;
 		}
 
@@ -67,17 +59,9 @@ namespace uTinyRipper.Layout
 
 		public MiscLayoutCategory Misc { get; }
 		public SerializedLayoutCategory Serialized { get; }
-		public BehaviourLayout Behaviour { get; }
-		public ComponentLayout Component { get; }
 		public EditorExtensionLayout EditorExtension { get; }
-		public GameObjectLayout GameObject { get; }
-		public MonoBehaviourLayout MonoBehaviour { get; }
-		public MonoScriptLayout MonoScript { get; }
 		public NamedObjectLayout NamedObject { get; }
 		public ObjectLayout Object { get; }
-		public PrefabLayout Prefab { get; }
-		public PrefabInstanceLayout PrefabInstance { get; }
-		public TransformLayout Transform { get; }
 
 		public string TypelessdataName => "_typelessdata";
 	}

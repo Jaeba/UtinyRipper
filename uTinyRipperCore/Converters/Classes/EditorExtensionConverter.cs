@@ -16,7 +16,6 @@ namespace uTinyRipper.Converters
 				if (layout.HasCorrespondingSourceObjectInvariant)
 				{
 					instance.CorrespondingSourceObject = origin.CorrespondingSourceObject;
-					instance.PrefabInstance = origin.PrefabInstance;
 				}
 				else
 				{
@@ -26,10 +25,6 @@ namespace uTinyRipper.Converters
 			else
 			{
 				instance.ExtensionPtr = origin.ExtensionPtr;
-			}
-			if (exlayout.HasPrefabAsset && layout.HasPrefabAsset)
-			{
-				instance.PrefabAsset = origin.PrefabAsset;
 			}
 #endif
 		}

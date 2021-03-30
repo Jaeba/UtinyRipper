@@ -71,28 +71,6 @@ namespace uTinyRipper
 			return null;
 		}
 
-		public string RequestAssembly(string assembly)
-		{
-			if (PlatformStructure != null)
-			{
-				string assemblyPath = PlatformStructure.RequestAssembly(assembly);
-				if (assemblyPath != null)
-				{
-					return assemblyPath;
-				}
-			}
-			if (MixedStructure != null)
-			{
-				string assemblyPath = MixedStructure.RequestAssembly(assembly);
-				if (assemblyPath != null)
-				{
-					return assemblyPath;
-				}
-			}
-
-			return null;
-		}
-
 		public string RequestResource(string resource)
 		{
 			if (PlatformStructure != null)
@@ -155,8 +133,6 @@ namespace uTinyRipper
 					layinfo = layinfo ?? processor.GetLayoutInfo();
 					AssetLayout layout = new AssetLayout(layinfo);
 					GameCollection.Parameters pars = new GameCollection.Parameters(layout);
-					pars.ScriptBackend = GetScriptingBackend();
-					pars.RequestAssemblyCallback = OnRequestAssembly;
 					pars.RequestResourceCallback = OnRequestResource;
 					FileCollection = new GameCollection(pars);
 					processor.ProcessSchemes(FileCollection);
@@ -330,32 +306,6 @@ namespace uTinyRipper
 			{
 				processor.AddScheme(file.Value, file.Key);
 			}
-		}
-
-		private ScriptingBackend GetScriptingBackend()
-		{
-			if (PlatformStructure != null)
-			{
-				ScriptingBackend backend = PlatformStructure.GetScriptingBackend();
-				if (backend != ScriptingBackend.Unknown)
-				{
-					return backend;
-				}
-			}
-			if (MixedStructure != null)
-			{
-				ScriptingBackend backend = MixedStructure.GetScriptingBackend();
-				if (backend != ScriptingBackend.Unknown)
-				{
-					return backend;
-				}
-			}
-			return ScriptingBackend.Unknown;
-		}
-
-		private string OnRequestAssembly(string assembly)
-		{
-			return RequestAssembly(assembly);
 		}
 
 		private string OnRequestResource(string resource)

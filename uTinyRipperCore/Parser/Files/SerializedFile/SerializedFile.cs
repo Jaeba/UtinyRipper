@@ -337,22 +337,6 @@ namespace uTinyRipper
 			return asset;
 		}
 
-		private void UpdateFileVersion()
-		{
-			if (!SerializedFileMetadata.HasSignature(Header.Version) && BuildSettings.HasVersion(Version))
-			{
-				foreach (Object asset in FetchAssets())
-				{
-					if (asset.ClassID == ClassIDType.BuildSettings)
-					{
-						BuildSettings settings = (BuildSettings)asset;
-						Metadata.UnityVersion = Version.Parse(settings.Version);
-						return;
-					}
-				}
-			}
-		}
-
 		private void AddAsset(long pathID, Object asset)
 		{
 			m_assets.Add(pathID, asset);

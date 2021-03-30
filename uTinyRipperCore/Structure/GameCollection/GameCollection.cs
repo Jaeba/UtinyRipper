@@ -10,7 +10,6 @@ using uTinyRipper.Converters;
 using uTinyRipper.Layout;
 using uTinyRipper.SerializedFiles;
 
-using MonoManager = uTinyRipper.Game.Assembly.Mono.MonoManager;
 using Object = uTinyRipper.Classes.Object;
 
 namespace uTinyRipper
@@ -35,7 +34,6 @@ namespace uTinyRipper
 		{
 			Layout = pars.Layout;
 			m_layouts.Add(Layout.Info, Layout);
-			AssemblyManager = new AssemblyManager(pars.ScriptBackend, Layout, OnRequestAssembly);
 			m_assemblyCallback = pars.RequestAssemblyCallback;
 			m_resourceCallback = pars.RequestResourceCallback;
 			Exporter = new ProjectExporter(this);
@@ -272,26 +270,6 @@ namespace uTinyRipper
 			return false;
 		}
 
-		private void OnRequestAssembly(string assembly)
-		{
-			string assemblyName = $"{assembly}{MonoManager.AssemblyExtension}";
-			if (m_resources.TryGetValue(assemblyName, out ResourceFile resFile))
-			{
-				resFile.Stream.Position = 0;
-				ReadAssembly(resFile.Stream, assemblyName);
-			}
-			else
-			{
-				string path = m_assemblyCallback?.Invoke(assembly);
-				if (path == null)
-				{
-					Logger.Log(LogType.Warning, LogCategory.Import, $"Assembly '{assembly}' hasn't been found");
-					return;
-				}
-				LoadAssembly(path);
-			}
-			Logger.Log(LogType.Info, LogCategory.Import, $"Assembly '{assembly}' has been loaded");
-		}
 
 		public AssetLayout Layout { get; }
 

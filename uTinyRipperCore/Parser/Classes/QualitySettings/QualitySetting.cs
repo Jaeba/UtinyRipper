@@ -5,7 +5,7 @@ using uTinyRipper.YAML;
 
 namespace uTinyRipper.Classes.QualitySettingss
 {
-	public class QualitySetting : IAssetReadable, IYAMLExportable
+	public class QualitySetting : IAssetReadable
 	{
 		public QualitySetting()
 		{
@@ -210,10 +210,6 @@ namespace uTinyRipper.Classes.QualitySettingss
 			{
 				ResolutionScalingFixedDPIFactor = setting.ResolutionScalingFixedDPIFactor;
 			}
-			if (!HasCustomRenderPipeline(version))
-			{
-				CustomRenderPipeline = setting.CustomRenderPipeline;
-			}
 #if UNIVERSAL
 			if (!HasExcludedTargetPlatforms(version, flags))
 			{
@@ -324,10 +320,7 @@ namespace uTinyRipper.Classes.QualitySettingss
 			{
 				ResolutionScalingFixedDPIFactor = reader.ReadSingle();
 			}
-			if (HasCustomRenderPipeline(reader.Version))
-			{
-				CustomRenderPipeline.Read(reader);
-			}
+			
 			if (HasVSyncCount(reader.Version))
 			{
 				reader.AlignStream();
@@ -339,57 +332,6 @@ namespace uTinyRipper.Classes.QualitySettingss
 				ExcludedTargetPlatforms = reader.ReadStringArray();
 			}
 #endif
-		}
-
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			YAMLMappingNode node = new YAMLMappingNode();
-			node.AddSerializedVersion(ToSerializedVersion(container.ExportVersion));
-			node.Add(NameName, Name);
-			node.Add(PixelLightCountName, PixelLightCount);
-			node.Add(ShadowsName, (int)Shadows);
-			node.Add(ShadowResolutionName, (int)ShadowResolution);
-			node.Add(ShadowProjectionName, (int)ShadowProjection);
-			node.Add(ShadowCascadesName, (int)ShadowCascades);
-			node.Add(ShadowDistanceName, ShadowDistance);
-			node.Add(ShadowNearPlaneOffsetName, ShadowNearPlaneOffset);
-			node.Add(ShadowCascade2SplitName, ShadowCascade2Split);
-			node.Add(ShadowCascade4SplitName, ShadowCascade4Split.ExportYAML(container));
-			node.Add(ShadowmaskModeName, (int)ShadowmaskMode);
-			node.Add(GetSkinWeightsName(container.ExportVersion), (int)SkinWeights);
-			node.Add(TextureQualityName, (int)TextureQuality);
-			node.Add(AnisotropicTexturesName, (int)AnisotropicTextures);
-			node.Add(AntiAliasingName, (int)AntiAliasing);
-			node.Add(SoftParticlesName, SoftParticles);
-			node.Add(SoftVegetationName, SoftVegetation);
-			node.Add(RealtimeReflectionProbesName, RealtimeReflectionProbes);
-			node.Add(BillboardsFaceCameraPositionName, BillboardsFaceCameraPosition);
-			node.Add(VSyncCountName, (int)VSyncCount);
-			node.Add(LodBiasName, LodBias);
-			node.Add(MaximumLODLevelName, MaximumLODLevel);
-			if (HasStreamingMipmapsActive(container.ExportVersion))
-			{
-				node.Add(StreamingMipmapsActiveName, StreamingMipmapsActive);
-				node.Add(StreamingMipmapsAddAllCamerasName, GetStreamingMipmapsAddAllCameras(container.Version));
-				node.Add(StreamingMipmapsMemoryBudgetName, GetStreamingMipmapsMemoryBudget(container.Version));
-				node.Add(StreamingMipmapsRenderersPerFrameName, GetStreamingMipmapsRenderersPerFrame(container.Version));
-				node.Add(StreamingMipmapsMaxLevelReductionName, GetStreamingMipmapsMaxLevelReduction(container.Version));
-				node.Add(StreamingMipmapsMaxFileIORequestsName, GetStreamingMipmapsMaxFileIORequests(container.Version));
-			}
-			node.Add(ParticleRaycastBudgetName, ParticleRaycastBudget);
-			node.Add(AsyncUploadTimeSliceName, AsyncUploadTimeSlice);
-			node.Add(AsyncUploadBufferSizeName, AsyncUploadBufferSize);
-			if (HasAsyncUploadPersistentBuffer(container.ExportVersion))
-			{
-				node.Add(AsyncUploadPersistentBufferName, AsyncUploadPersistentBuffer);
-			}
-			node.Add(ResolutionScalingFixedDPIFactorName, ResolutionScalingFixedDPIFactor);
-			if (HasCustomRenderPipeline(container.ExportVersion))
-			{
-				node.Add(CustomRenderPipelineName, CustomRenderPipeline.ExportYAML(container));
-			}
-			node.Add(ExcludedTargetPlatformsName, GetExcludedTargetPlatforms(container.Version, container.Flags).ExportYAML());
-			return node;
 		}
 
 		private IReadOnlyList<string> GetExcludedTargetPlatforms(Version version, TransferInstructionFlags flags)
@@ -506,6 +448,5 @@ namespace uTinyRipper.Classes.QualitySettingss
 		public const string ExcludedTargetPlatformsName = "excludedTargetPlatforms";
 
 		public Vector3f ShadowCascade4Split;
-		public PPtr<MonoBehaviour> CustomRenderPipeline;
 	}
 }

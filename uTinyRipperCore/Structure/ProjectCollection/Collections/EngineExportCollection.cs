@@ -112,18 +112,6 @@ namespace uTinyRipper.Converters.Project
 					}
 					break;
 
-				case ClassIDType.MonoBehaviour:
-					{
-						MonoBehaviour behaviour = (MonoBehaviour)asset;
-						if (behaviour.Name != string.Empty)
-						{
-							if (EngineBuiltInAssets.TryGetBehaviour(behaviour.Name, version, out engineAsset))
-							{
-								return true;
-							}
-						}
-					}
-					break;
 			}
 			engineAsset = default;
 			return false;

@@ -53,11 +53,6 @@ namespace uTinyRipper.Layout
 			if (layout.HasCorrespondingSourceObject)
 			{
 				context.AddPPtr(layout.Name, layout.CorrespondingSourceObjectInvariantName);
-				context.AddPPtr(context.Layout.PrefabInstance.Name, layout.PrefabInstanceInvariantName);
-			}
-			if (layout.HasPrefabAsset)
-			{
-				context.AddPPtr(context.Layout.Prefab.Name, layout.PrefabAssetName);
 			}
 		}
 

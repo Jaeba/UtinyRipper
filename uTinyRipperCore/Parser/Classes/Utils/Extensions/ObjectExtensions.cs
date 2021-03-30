@@ -10,14 +10,6 @@ namespace uTinyRipper.Classes
 			{
 				return named.Name;
 			}
-			else if (_this is GameObject gameObject)
-			{
-				return gameObject.Name;
-			}
-			else if (_this is MonoBehaviour monoBeh)
-			{
-				return monoBeh.Name;
-			}
 			else
 			{
 				throw new Exception($"Unable to get name for {_this.ClassID}");
@@ -29,14 +21,6 @@ namespace uTinyRipper.Classes
 			if (_this is NamedObject named)
 			{
 				return named.ValidName;
-			}
-			else if (_this is GameObject gameObject)
-			{
-				return gameObject.Name;
-			}
-			else if (_this is MonoBehaviour monoBeh)
-			{
-				return monoBeh.Name;
 			}
 			else
 			{

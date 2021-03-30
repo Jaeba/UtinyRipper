@@ -82,39 +82,7 @@ namespace uTinyRipper.Game.Assembly
 #region Naming
 		public static bool IsPrimitive(string @namespace, string name)
 		{
-			if (@namespace == SystemNamespace)
-			{
-				switch (name)
-				{
-					case MonoUtils.VoidName:
-					case MonoUtils.CVoidName:
-					case MonoUtils.BooleanName:
-					case MonoUtils.BoolName:
-					case MonoUtils.SByteName:
-					case MonoUtils.CSByteName:
-					case MonoUtils.ByteName:
-					case MonoUtils.CByteName:
-					case MonoUtils.CharName:
-					case MonoUtils.CCharName:
-					case MonoUtils.Int16Name:
-					case MonoUtils.ShortName:
-					case MonoUtils.UInt16Name:
-					case MonoUtils.UShortName:
-					case MonoUtils.Int32Name:
-					case MonoUtils.IntName:
-					case MonoUtils.UInt32Name:
-					case MonoUtils.UIntName:
-					case MonoUtils.Int64Name:
-					case MonoUtils.LongName:
-					case MonoUtils.UInt64Name:
-					case MonoUtils.ULongName:
-					case MonoUtils.SingleName:
-					case MonoUtils.FloatName:
-					case MonoUtils.DoubleName:
-					case MonoUtils.CDoubleName:
-						return true;
-				}
-			}
+			
 			return false;
 		}
 
@@ -141,7 +109,7 @@ namespace uTinyRipper.Game.Assembly
 			{
 				return true;
 			}
-			if (@namespace == SystemNamespace && name == MonoUtils.ValueType)
+			if (@namespace == SystemNamespace)
 			{
 				return true;
 			}
@@ -154,11 +122,11 @@ namespace uTinyRipper.Game.Assembly
 		}
 		public static bool IsObject(string @namespace, string name)
 		{
-			return @namespace == SystemNamespace && (name == MonoUtils.ObjectName || name == MonoUtils.CObjectName);
+			return @namespace == SystemNamespace;
 		}
 		public static bool IsString(string @namespace, string name)
 		{
-			return @namespace == SystemNamespace && (name == MonoUtils.StringName || name == MonoUtils.CStringName);
+			return @namespace == SystemNamespace;
 		}
 		public static bool IsList(string @namespace, string name)
 		{
@@ -167,7 +135,7 @@ namespace uTinyRipper.Game.Assembly
 
 		public static bool IsEngineObject(string @namespace, string name)
 		{
-			return @namespace == UnityEngineNamespace && name == MonoUtils.ObjectName;
+			return @namespace == UnityEngineNamespace;
 		}
 		public static bool IsScriptableObject(string @namespace, string name)
 		{
@@ -261,34 +229,6 @@ namespace uTinyRipper.Game.Assembly
 			{
 				switch (name)
 				{
-					case MonoUtils.VoidName:
-						return PrimitiveType.Void;
-					case MonoUtils.BooleanName:
-						return PrimitiveType.Bool;
-					case MonoUtils.CharName:
-						return PrimitiveType.Char;
-					case MonoUtils.SByteName:
-						return PrimitiveType.SByte;
-					case MonoUtils.ByteName:
-						return PrimitiveType.Byte;
-					case MonoUtils.Int16Name:
-						return PrimitiveType.Short;
-					case MonoUtils.UInt16Name:
-						return PrimitiveType.UShort;
-					case MonoUtils.Int32Name:
-						return PrimitiveType.Int;
-					case MonoUtils.UInt32Name:
-						return PrimitiveType.UInt;
-					case MonoUtils.Int64Name:
-						return PrimitiveType.Long;
-					case MonoUtils.UInt64Name:
-						return PrimitiveType.ULong;
-					case MonoUtils.SingleName:
-						return PrimitiveType.Single;
-					case MonoUtils.DoubleName:
-						return PrimitiveType.Double;
-					case MonoUtils.StringName:
-						return PrimitiveType.String;
 
 					default:
 						return PrimitiveType.Complex;

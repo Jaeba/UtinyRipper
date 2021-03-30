@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using uTinyRipper.Game;
 using uTinyRipper.Game.Assembly;
-using uTinyRipper.Game.Assembly.Mono;
 
 namespace uTinyRipper
 {
@@ -65,16 +64,6 @@ namespace uTinyRipper
 			return null;
 		}
 
-		public string RequestAssembly(string assembly)
-		{
-			string assemblyName = $"{assembly}{MonoManager.AssemblyExtension}";
-			if (Assemblies.TryGetValue(assemblyName, out string assemblyPath))
-			{
-				return assemblyPath;
-			}
-			return null;
-		}
-
 		public string RequestResource(string resource)
 		{
 			foreach (string dataPath in DataPathes)
@@ -88,23 +77,6 @@ namespace uTinyRipper
 			return null;
 		}
 
-		public virtual ScriptingBackend GetScriptingBackend()
-		{
-			if (Assemblies.Count == 0)
-			{
-				return ScriptingBackend.Unknown;
-			}
-
-			string assemblyPath = Assemblies.First().Value;
-			if (MonoManager.IsMonoAssembly(assemblyPath))
-			{
-				return ScriptingBackend.Mono;
-			}
-			else
-			{
-				throw new NotImplementedException();
-			}
-		}
 
 		protected void CollectGameFiles(DirectoryInfo root, IDictionary<string, string> files)
 		{
@@ -179,36 +151,7 @@ namespace uTinyRipper
 			}
 		}
 
-		protected void CollectAssemblies(DirectoryInfo root, IDictionary<string, string> assemblies)
-		{
-			foreach (FileInfo file in root.EnumerateFiles())
-			{
-				if (AssemblyManager.IsAssembly(file.Name))
-				{
-					assemblies.Add(file.Name, file.FullName);
-				}
-			}
-		}
 
-		protected void CollectMainAssemblies(DirectoryInfo root, IDictionary<string, string> assemblies)
-		{
-			string managedPath = Path.Combine(root.FullName, ManagedName);
-			if (Directory.Exists(managedPath))
-			{
-				DirectoryInfo managedDirectory = new DirectoryInfo(managedPath);
-				CollectAssemblies(managedDirectory, assemblies);
-			}
-			else
-			{
-				string libPath = Path.Combine(root.FullName, LibName);
-				if (Directory.Exists(libPath))
-				{
-					CollectAssemblies(root, assemblies);
-					DirectoryInfo libDirectory = new DirectoryInfo(libPath);
-					CollectAssemblies(libDirectory, assemblies);
-				}
-			}
-		}
 
 		private string FindEngineDependency(string path, string dependency)
 		{

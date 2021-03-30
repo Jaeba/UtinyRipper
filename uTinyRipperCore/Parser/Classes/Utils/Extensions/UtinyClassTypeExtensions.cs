@@ -11,15 +11,6 @@ namespace uTinyRipper.Classes
 				case ClassIDType.Object:
 					return typeof(Object);
 
-				case ClassIDType.GameObject:
-					return typeof(GameObject);
-
-				case ClassIDType.Component:
-					return typeof(Component);
-
-				case ClassIDType.Transform:
-					return typeof(Transform);
-
 				case ClassIDType.Material:
 					return typeof(Material);
 

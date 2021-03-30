@@ -83,55 +83,6 @@ namespace uTinyRipper.Converters
 		{
 			switch (type)
 			{
-				case MonoUtils.BooleanName:
-				case MonoUtils.BoolName:
-					AddBool(name);
-					break;
-				case MonoUtils.SByteName:
-				case MonoUtils.CSByteName:
-					AddSByte(name);
-					break;
-				case MonoUtils.ByteName:
-				case MonoUtils.CByteName:
-					AddByte(name);
-					break;
-				case MonoUtils.CharName:
-				case MonoUtils.CCharName:
-					AddUInt16(name);
-					break;
-				case MonoUtils.Int16Name:
-				case MonoUtils.ShortName:
-					AddInt16(name);
-					break;
-				case MonoUtils.UInt16Name:
-				case MonoUtils.UShortName:
-					AddUInt16(name);
-					break;
-				case MonoUtils.Int32Name:
-				case MonoUtils.IntName:
-					AddInt32(name);
-					break;
-				case MonoUtils.UInt32Name:
-				case MonoUtils.UIntName:
-					AddUInt32(name);
-					break;
-				case MonoUtils.Int64Name:
-				case MonoUtils.LongName:
-					AddInt64(name);
-					break;
-				case MonoUtils.UInt64Name:
-				case MonoUtils.ULongName:
-					AddUInt64(name);
-					break;
-				case MonoUtils.SingleName:
-				case MonoUtils.FloatName:
-					AddSingle(name);
-					break;
-				case MonoUtils.DoubleName:
-				case MonoUtils.CDoubleName:
-					AddDouble(name);
-					break;
-
 				default:
 					throw new Exception("Unknown primitive type " + type);
 			}

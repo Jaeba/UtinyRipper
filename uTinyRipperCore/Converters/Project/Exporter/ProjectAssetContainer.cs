@@ -25,14 +25,6 @@ namespace uTinyRipper.Converters
 			{
 				switch (asset.ClassID)
 				{
-					case ClassIDType.BuildSettings:
-						m_buildSettings = (BuildSettings)asset;
-						break;
-
-					case ClassIDType.TagManager:
-						m_tagManager = (TagManager)asset;
-						break;
-
 					case ClassIDType.ResourceManager:
 						AddResources((ResourceManager)asset);
 						break;
@@ -135,119 +127,6 @@ namespace uTinyRipper.Converters
 			return new MetaPtr(exportID, UnityGUID.MissingReference, AssetType.Meta);
 		}
 
-		public UnityGUID SceneNameToGUID(string name)
-		{
-			if (m_buildSettings == null)
-			{
-				return default;
-			}
-
-			int index = m_buildSettings.Scenes.IndexOf(name);
-			if (index == -1)
-			{
-				throw new Exception($"Scene '{name}' hasn't been found in build settings");
-			}
-
-			return default;
-		}
-
-		public string SceneIndexToName(int sceneIndex)
-		{
-			return m_buildSettings == null ? $"level{sceneIndex}" : m_buildSettings.Scenes[sceneIndex];
-		}
-
-		public bool IsSceneDuplicate(int sceneIndex)
-		{
-			if (m_buildSettings == null)
-			{
-				return false;
-			}
-
-			string sceneName = m_buildSettings.Scenes[sceneIndex];
-			for (int i = 0; i < m_buildSettings.Scenes.Length; i++)
-			{
-				if (m_buildSettings.Scenes[i] == sceneName)
-				{
-					if (i != sceneIndex)
-					{
-						return true;
-					}
-				}
-			}
-			return false;
-		}
-
-		public string TagIDToName(int tagID)
-		{
-			switch (tagID)
-			{
-				case 0:
-					return TagManager.UntaggedTag;
-				case 1:
-					return TagManager.RespawnTag;
-				case 2:
-					return TagManager.FinishTag;
-				case 3:
-					return TagManager.EditorOnlyTag;
-				//case 4:
-				case 5:
-					return TagManager.MainCameraTag;
-				case 6:
-					return TagManager.PlayerTag;
-				case 7:
-					return TagManager.GameControllerTag;
-			}
-			if (m_tagManager != null)
-			{
-				// Unity doesn't verify tagID on export?
-				int tagIndex = tagID - 20000;
-				if (tagIndex < m_tagManager.Tags.Length)
-				{
-					if (tagIndex >= 0)
-					{
-						return m_tagManager.Tags[tagIndex];
-					}
-					else if (!TagManager.IsBrokenCustomTags(m_tagManager.File.Version))
-					{
-						throw new Exception($"Unknown default tag {tagID}");
-					}
-				}
-			}
-			return $"unknown_{tagID}";
-		}
-
-		public ushort TagNameToID(string tagName)
-		{
-			switch (tagName)
-			{
-				case TagManager.UntaggedTag:
-					return 0;
-				case TagManager.RespawnTag:
-					return 1;
-				case TagManager.FinishTag:
-					return 2;
-				case TagManager.EditorOnlyTag:
-					return 3;
-				case TagManager.MainCameraTag:
-					return 5;
-				case TagManager.PlayerTag:
-					return 6;
-				case TagManager.GameControllerTag:
-					return 7;
-			}
-			if (m_tagManager != null)
-			{
-				for (int i = 0; i < m_tagManager.Tags.Length; i++)
-				{
-					if (m_tagManager.Tags[i] == tagName)
-					{
-						return (ushort)(20000 + i);
-					}
-				}
-			}
-			return 0;
-		}
-
 		private void AddResources(ResourceManager manager)
 		{
 			foreach (KeyValuePair<string, PPtr<Object>> kvp in manager.Container)
@@ -345,8 +224,5 @@ namespace uTinyRipper.Converters
 		private readonly ExportOptions m_options;
 		private readonly Dictionary<AssetInfo, IExportCollection> m_assetCollections = new Dictionary<AssetInfo, IExportCollection>();
 		private readonly Dictionary<Object, ProjectAssetPath> m_pathAssets = new Dictionary<Object, ProjectAssetPath>();
-
-		private readonly BuildSettings m_buildSettings;
-		private readonly TagManager m_tagManager;
 	}
 }

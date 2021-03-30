@@ -59,7 +59,7 @@ namespace uTinyRipper
 			Files = files;
 
 			Dictionary<string, string> assemblies = new Dictionary<string, string>();
-			CollectMainAssemblies(apkDataDirectory, assemblies);
+			
 			Assemblies = assemblies;
 		}
 
