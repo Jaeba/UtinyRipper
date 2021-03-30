@@ -1,7 +1,4 @@
 using System;
-using uTinyRipper.YAML;
-using uTinyRipper.Converters;
-using uTinyRipper.Layout;
 
 namespace uTinyRipper.Classes
 {
@@ -76,17 +73,6 @@ namespace uTinyRipper.Classes
 			writer.Write(X);
 			writer.Write(Y);
 			writer.Write(Z);
-		}
-
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			YAMLMappingNode node = new YAMLMappingNode();
-			Vector3iLayout layout = container.ExportLayout.Serialized.Vector3i;
-			node.Style = MappingStyle.Flow;
-			node.Add(layout.XName, X);
-			node.Add(layout.YName, Y);
-			node.Add(layout.ZName, Z);
-			return node;
 		}
 
 		public override bool Equals(object obj)

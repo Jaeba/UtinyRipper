@@ -1,7 +1,6 @@
 using System.IO;
 using System.Text;
 using uTinyRipper.Converters;
-using uTinyRipper.YAML;
 
 namespace uTinyRipper.Classes
 {
@@ -44,18 +43,6 @@ namespace uTinyRipper.Classes
 		protected void ReadNamedObject(AssetReader reader)
 		{
 			base.Read(reader);
-		}
-
-		protected YAMLMappingNode ExportBaseYAMLRoot(IExportContainer container)
-		{
-			return base.ExportYAMLRoot(container);
-		}
-
-		protected override YAMLMappingNode ExportYAMLRoot(IExportContainer container)
-		{
-			YAMLMappingNode node = base.ExportYAMLRoot(container);
-			node.Add(ScriptName, Script.ExportYAML());
-			return node;
 		}
 
 		public string TextScript => Encoding.UTF8.GetString(Script);

@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using uTinyRipper.YAML;
 using uTinyRipper.Classes.Objects;
 using uTinyRipper.Converters;
 using uTinyRipper.Classes.Misc;
@@ -43,21 +42,6 @@ namespace uTinyRipper.Classes
 			}
 		}
 
-		public YAMLDocument ExportYAMLDocument(IExportContainer container)
-		{
-			YAMLDocument document = new YAMLDocument();
-			YAMLMappingNode root = document.CreateMappingRoot();
-			root.Tag = ClassID.ToInt().ToString();
-			root.Anchor = container.GetExportID(this).ToString();
-			YAMLMappingNode node = ExportYAMLRoot(container);
-			root.Add(container.ExportLayout.ClassNames[ClassID], node);
-			return document;
-		}
-
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			return ExportYAMLRoot(container);
-		}
 
 		/// <summary>
 		/// Export object's content in such formats as txt or png
@@ -72,16 +56,6 @@ namespace uTinyRipper.Classes
 			yield break;
 		}
 
-		protected virtual YAMLMappingNode ExportYAMLRoot(IExportContainer container)
-		{
-			YAMLMappingNode node = new YAMLMappingNode();
-			ObjectLayout layout = container.Layout.Object;
-			if (layout.HasHideFlag)
-			{
-				node.Add(layout.ObjectHideFlagsName, (uint)ObjectHideFlags);
-			}
-			return node;
-		}
 
 #warning TODO: remove this whole block
 		public AssetInfo AssetInfo { get; set; }

@@ -1,6 +1,4 @@
 using System.Globalization;
-using uTinyRipper.YAML;
-using uTinyRipper.Converters;
 using uTinyRipper.Layout;
 
 namespace uTinyRipper.Classes
@@ -118,28 +116,6 @@ namespace uTinyRipper.Classes
 				writer.Write(Width);
 				writer.Write(Height);
 			}
-		}
-
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			YAMLMappingNode node = new YAMLMappingNode();
-			RectfLayout layout = container.ExportLayout.Serialized.Rectf;
-			node.AddSerializedVersion(layout.Version);
-			if (layout.HasXMin)
-			{
-				node.Add(layout.XMinName, XMin);
-				node.Add(layout.YMinName, YMin);
-				node.Add(layout.XMaxName, XMax);
-				node.Add(layout.YMaxName, YMax);
-			}
-			else
-			{
-				node.Add(layout.XName, X);
-				node.Add(layout.YName, Y);
-				node.Add(layout.WidthName, Width);
-				node.Add(layout.HeightName, Height);
-			}
-			return node;
 		}
 
 		public override bool Equals(object obj)

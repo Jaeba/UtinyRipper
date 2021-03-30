@@ -1,6 +1,4 @@
-﻿using uTinyRipper.Converters;
-using uTinyRipper.Layout;
-using uTinyRipper.YAML;
+﻿using uTinyRipper.Layout;
 
 namespace uTinyRipper.Classes
 {
@@ -42,17 +40,6 @@ namespace uTinyRipper.Classes
 				writer.Write(Message);
 				writer.Write(IsWarning);
 			}
-		}
-
-		protected override YAMLMappingNode ExportYAMLRoot(IExportContainer container)
-		{
-			YAMLMappingNode node = base.ExportYAMLRoot(container);
-			if (HasMessage(container.ExportVersion))
-			{
-				node.Add(MessageName, Message);
-				node.Add(IsWarningName, IsWarning);
-			}
-			return node;
 		}
 
 		public string Message { get; set; }

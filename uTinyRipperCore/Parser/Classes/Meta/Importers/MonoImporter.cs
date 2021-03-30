@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using uTinyRipper.Converters;
 using uTinyRipper.Layout;
-using uTinyRipper.YAML;
 
 namespace uTinyRipper.Classes
 {
@@ -80,21 +78,6 @@ namespace uTinyRipper.Classes
 			PostWrite(writer);
 		}
 
-		protected override YAMLMappingNode ExportYAMLRoot(IExportContainer container)
-		{
-			YAMLMappingNode node = base.ExportYAMLRoot(container);
-			node.AddSerializedVersion(ToSerializedVersion(container.ExportVersion));
-			if (HasDefaultReferences(container.ExportVersion))
-			{
-				node.Add(DefaultReferencesName, DefaultReferences.ExportYAML(container));
-			}
-			if (HasExecutionOrder(container.ExportVersion))
-			{
-				node.Add(ExecutionOrderName, ExecutionOrder);
-			}
-			PostExportYAML(container, node);
-			return node;
-		}
 
 		public override ClassIDType ClassID => ClassIDType.MonoImporter;
 

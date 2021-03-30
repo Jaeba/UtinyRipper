@@ -1,7 +1,4 @@
-﻿using uTinyRipper.Converters;
-using uTinyRipper.YAML;
-
-namespace uTinyRipper.Classes
+﻿namespace uTinyRipper.Classes
 {
 	public abstract class GameManager : EditorExtension
 	{
@@ -37,11 +34,6 @@ namespace uTinyRipper.Classes
 			{
 				WriteObject(writer);
 			}
-		}
-
-		protected override YAMLMappingNode ExportYAMLRoot(IExportContainer container)
-		{
-			return HasEditorExtension(container.ExportVersion) ? base.ExportYAMLRoot(container) : ExportYAMLRootObject(container);
 		}
 	}
 }

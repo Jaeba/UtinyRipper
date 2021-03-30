@@ -1,8 +1,5 @@
 ﻿using System;
 using uTinyRipper.Classes.Misc;
-using uTinyRipper.Converters;
-using uTinyRipper.YAML;
-
 using DateTime = System.DateTime;
 
 namespace uTinyRipper.Classes
@@ -38,27 +35,6 @@ namespace uTinyRipper.Classes
 			return 2;
 		}
 
-		public YAMLDocument ExportYAMLDocument(IExportContainer container)
-		{
-			YAMLDocument document = new YAMLDocument();
-			YAMLMappingNode root = document.CreateMappingRoot();
-			root.Add(FileFormatVersionName, ToFileFormatVersion(container.ExportVersion));
-			root.Add(GuidName, GUID.ExportYAML(container));
-			if (IsFolderAsset)
-			{
-				root.Add(FolderAssetName, true);
-			}
-			if (HasLicenseData)
-			{
-				root.Add(TimeCreatedName, CurrentTick);
-				root.Add(LicenseTypeName, "Free");
-			}
-			if (Importer.IncludesImporter(container.ExportVersion))
-			{
-				root.Add(Importer.ClassID.ToString(), Importer.ExportYAML(container));
-			}
-			return document;
-		}
 
 		public UnityGUID GUID { get; }
 		public bool IsFolderAsset { get; }

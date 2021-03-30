@@ -2,9 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using uTinyRipper.Classes.AssetBundles;
-using uTinyRipper.YAML;
-using uTinyRipper.Converters;
-
 namespace uTinyRipper.Classes
 {
 	public sealed class AssetBundle : NamedObject
@@ -142,11 +139,6 @@ namespace uTinyRipper.Classes
 			{
 				yield return asset;
 			}
-		}
-
-		protected override YAMLMappingNode ExportYAMLRoot(IExportContainer container)
-		{
-			throw new NotSupportedException();
 		}
 
 		public override string ExportExtension => throw new NotSupportedException();

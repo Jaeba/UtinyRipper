@@ -1,7 +1,4 @@
-using uTinyRipper.Converters;
 using uTinyRipper.Layout;
-using uTinyRipper.YAML;
-
 namespace uTinyRipper.Classes
 {
 	public abstract class NamedObject : EditorExtension
@@ -36,13 +33,6 @@ namespace uTinyRipper.Classes
 			return $"{ValidName}({GetType().Name})";
 		}
 
-		protected override YAMLMappingNode ExportYAMLRoot(IExportContainer container)
-		{
-			YAMLMappingNode root = base.ExportYAMLRoot(container);
-			NamedObjectLayout layout = container.ExportLayout.NamedObject;
-			root.Add(layout.NameName, Name);
-			return root;
-		}
 
 		public virtual string ValidName => Name.Length == 0 ? GetType().Name : Name;
 

@@ -1,7 +1,3 @@
-using uTinyRipper.YAML;
-using uTinyRipper.Converters;
-using uTinyRipper.Layout;
-
 namespace uTinyRipper.Classes
 {
 	public struct Vector4f : IAsset
@@ -73,17 +69,6 @@ namespace uTinyRipper.Classes
 			writer.Write(Y);
 			writer.Write(Z);
 			writer.Write(W);
-		}
-
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			YAMLMappingNode node = new YAMLMappingNode(MappingStyle.Flow);
-			Vector4fLayout layout = container.ExportLayout.Serialized.Vector4f;
-			node.Add(layout.XName, X);
-			node.Add(layout.YName, Y);
-			node.Add(layout.ZName, Z);
-			node.Add(layout.WName, W);
-			return node;
 		}
 
 		public override bool Equals(object obj)

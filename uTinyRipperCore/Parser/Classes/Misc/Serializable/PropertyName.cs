@@ -1,6 +1,3 @@
-using uTinyRipper.YAML;
-using uTinyRipper.Converters;
-
 namespace uTinyRipper.Classes
 {
 	public struct PropertyName : IAsset
@@ -23,11 +20,6 @@ namespace uTinyRipper.Classes
 		public void Write(AssetWriter writer)
 		{
 			writer.Write(ID);
-		}
-
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			return new YAMLScalarNode(ID == 0 ? string.Empty : $"Unknown_{unchecked((uint)ID)}");
 		}
 
 		public override int GetHashCode()

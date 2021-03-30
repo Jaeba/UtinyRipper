@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using uTinyRipper.Classes;
-using uTinyRipper.Converters;
-using uTinyRipper.YAML;
 
 using Object = uTinyRipper.Classes.Object;
 
@@ -39,20 +37,6 @@ namespace uTinyRipper.Game.Assembly
 					Fields[i].Write(writer, etalon);
 				}
 			}
-		}
-
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			YAMLMappingNode node = new YAMLMappingNode();
-			for (int i = 0; i < Fields.Length; i++)
-			{
-				SerializableType.Field etalon = Type.GetField(i);
-				if (IsAvailable(etalon))
-				{
-					node.Add(etalon.Name, Fields[i].ExportYAML(container, etalon));
-				}
-			}
-			return node;
 		}
 
 		public IEnumerable<PPtr<Object>> FetchDependencies(DependencyContext context)

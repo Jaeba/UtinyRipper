@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Text;
-using uTinyRipper.Converters;
 using uTinyRipper.SerializedFiles;
-using uTinyRipper.YAML;
 
 namespace uTinyRipper.Classes.Misc
 {
@@ -73,11 +71,6 @@ namespace uTinyRipper.Classes.Misc
 			writer.Write(Data1);
 			writer.Write(Data2);
 			writer.Write(Data3);
-		}
-
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			return new YAMLScalarNode(ToString());
 		}
 
 		public override bool Equals(object obj)

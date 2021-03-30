@@ -1,10 +1,8 @@
 ﻿using SevenZip;
-using uTinyRipper.Converters;
-using uTinyRipper.YAML;
 
 namespace uTinyRipper.Classes.Materials
 {
-	public struct FastPropertyName : IAssetReadable, IYAMLExportable
+	public struct FastPropertyName : IAssetReadable
 	{
 		/// <summary>
 		/// 2017.3 and greater
@@ -19,20 +17,6 @@ namespace uTinyRipper.Classes.Materials
 		public void Read(AssetReader reader)
 		{
 			Value = reader.ReadString();
-		}
-
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			if (IsPlainString(container.ExportVersion))
-			{
-				return new YAMLScalarNode(Value);
-			}
-			else
-			{
-				YAMLMappingNode node = new YAMLMappingNode();
-				node.Add(NameName, Value);
-				return node;
-			}
 		}
 
 		public override int GetHashCode()

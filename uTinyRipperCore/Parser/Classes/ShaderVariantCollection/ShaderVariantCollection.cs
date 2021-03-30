@@ -1,9 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using uTinyRipper.Classes.ShaderVariantCollections;
-using uTinyRipper.YAML;
-using uTinyRipper.Converters;
-
 namespace uTinyRipper.Classes
 {
 	public sealed class ShaderVariantCollection : NamedObject
@@ -44,13 +41,6 @@ namespace uTinyRipper.Classes
 				}
 			}
 			return shaders;
-		}
-
-		protected override YAMLMappingNode ExportYAMLRoot(IExportContainer container)
-		{
-			YAMLMappingNode node = base.ExportYAMLRoot(container);
-			node.Add(ShadersName, GetShaders().ExportYAML(container));
-			return node;
 		}
 
 		public override string ExportExtension => "shadervariants";

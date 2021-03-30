@@ -1,7 +1,3 @@
-using uTinyRipper.YAML;
-using uTinyRipper.Converters;
-using uTinyRipper.Layout;
-
 namespace uTinyRipper.Classes
 {
 	public struct ColorRGBA32 : IAsset
@@ -28,15 +24,6 @@ namespace uTinyRipper.Classes
 		public void Write(AssetWriter writer)
 		{
 			writer.Write(RGBA);
-		}
-
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			YAMLMappingNode node = new YAMLMappingNode();
-			ColorRGBA32Layout layout = container.ExportLayout.Serialized.ColorRGBA32;
-			node.AddSerializedVersion(layout.Version);
-			node.Add(layout.RgbaName, RGBA);
-			return node;
 		}
 
 		public static ColorRGBA32 White => new ColorRGBA32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue);

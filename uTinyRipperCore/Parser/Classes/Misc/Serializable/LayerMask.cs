@@ -1,6 +1,4 @@
-using uTinyRipper.Converters;
 using uTinyRipper.Layout;
-using uTinyRipper.YAML;
 
 namespace uTinyRipper.Classes
 {
@@ -23,15 +21,6 @@ namespace uTinyRipper.Classes
 			{
 				writer.Write((ushort)Bits);
 			}
-		}
-
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			YAMLMappingNode node = new YAMLMappingNode();
-			LayerMaskLayout layout = container.ExportLayout.Serialized.LayerMask;
-			node.AddSerializedVersion(layout.Version);
-			node.Add(layout.BitsName, Bits);
-			return node;
 		}
 
 		public uint Bits { get; set; }

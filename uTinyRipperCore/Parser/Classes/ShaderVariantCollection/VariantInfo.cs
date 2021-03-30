@@ -1,9 +1,6 @@
-﻿using uTinyRipper.Converters;
-using uTinyRipper.YAML;
-
-namespace uTinyRipper.Classes.ShaderVariantCollections
+﻿namespace uTinyRipper.Classes.ShaderVariantCollections
 {
-	public struct VariantInfo : IAssetReadable, IYAMLExportable
+	public struct VariantInfo : IAssetReadable
 	{
 		public static bool operator ==(VariantInfo left, VariantInfo right)
 		{
@@ -19,14 +16,6 @@ namespace uTinyRipper.Classes.ShaderVariantCollections
 		{
 			Keywords = reader.ReadString();
 			PassType = (PassType)reader.ReadInt32();
-		}
-
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			YAMLMappingNode node = new YAMLMappingNode();
-			node.Add(KeywordsName, Keywords);
-			node.Add(PassTypeName, (int)PassType);
-			return node;
 		}
 
 		public override int GetHashCode()

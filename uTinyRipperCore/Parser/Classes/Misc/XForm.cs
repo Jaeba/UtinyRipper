@@ -1,9 +1,6 @@
-using uTinyRipper.Converters;
-using uTinyRipper.YAML;
-
 namespace uTinyRipper.Classes.Misc
 {
-	public struct XForm : IAssetReadable, IYAMLExportable
+	public struct XForm : IAssetReadable
 	{
 		/// <summary>
 		/// 5.4.0 and greater
@@ -29,15 +26,6 @@ namespace uTinyRipper.Classes.Misc
 			{
 				S4.Read(reader);
 			}
-		}
-
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			YAMLMappingNode node = new YAMLMappingNode();
-			node.Add(TName, T.ExportYAML(container));
-			node.Add(QName, Q.ExportYAML(container));
-			node.Add(SName, S.ExportYAML(container));
-			return node;
 		}
 
 		public override string ToString()

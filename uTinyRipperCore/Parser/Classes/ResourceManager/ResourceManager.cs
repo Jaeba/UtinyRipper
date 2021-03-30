@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using uTinyRipper.Classes.ResourceManagers;
-using uTinyRipper.YAML;
-using uTinyRipper.Converters;
 
 namespace uTinyRipper.Classes
 {
@@ -47,17 +45,6 @@ namespace uTinyRipper.Classes
 					yield return asset;
 				}
 			}
-		}
-
-		protected override YAMLMappingNode ExportYAMLRoot(IExportContainer container)
-		{
-			YAMLMappingNode node = base.ExportYAMLRoot(container);
-			node.Add(ContainerName, Container.ExportYAML(container));
-			if (HasDependentAssets(container.Version, container.ExportFlags))
-			{
-				node.Add(DependentAssetsName, DependentAssets.ExportYAML(container));
-			}
-			return node;
 		}
 		
 		public KeyValuePair<string, PPtr<Object>>[] Container { get; set; }

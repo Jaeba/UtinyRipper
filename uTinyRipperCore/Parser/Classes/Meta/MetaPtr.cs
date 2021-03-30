@@ -1,11 +1,9 @@
 ﻿using uTinyRipper.Classes.Misc;
-using uTinyRipper.Converters;
 using uTinyRipper.Project;
-using uTinyRipper.YAML;
 
 namespace uTinyRipper.Classes
 {
-	public sealed class MetaPtr : IYAMLExportable
+	public sealed class MetaPtr
 	{
 		public MetaPtr(long fileID)
 		{
@@ -24,19 +22,6 @@ namespace uTinyRipper.Classes
 		public MetaPtr(ClassIDType classID, AssetType assetType) :
 			this(ExportCollection.GetMainExportID((uint)classID), UnityGUID.MissingReference, assetType)
 		{
-		}
-
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			YAMLMappingNode node = new YAMLMappingNode();
-			node.Style = MappingStyle.Flow;
-			node.Add(FileIDName, FileID);
-			if (!GUID.IsZero)
-			{
-				node.Add(GuidName, GUID.ExportYAML(container));
-				node.Add(TypeName, (int)AssetType);
-			}
-			return node;
 		}
 
 		public static MetaPtr NullPtr { get; } = new MetaPtr(0);

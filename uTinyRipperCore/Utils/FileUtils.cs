@@ -79,37 +79,6 @@ namespace uTinyRipper
 
 		public static string ToLongPath(string path)
 		{
-			if (true) //RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-			{
-				if (RunetimeUtils.IsRunningOnNetCore)
-				{
-					return path;
-				}
-				if (path.StartsWith(DirectoryUtils.LongPathPrefix, StringComparison.Ordinal))
-				{
-					return path;
-				}
-
-				string fullPath = GetFullPath(path);
-				int sepIndex = fullPath.LastIndexOf(Path.DirectorySeparatorChar);
-				int asepIndex = fullPath.LastIndexOf(Path.AltDirectorySeparatorChar);
-				int index = Math.Max(sepIndex, asepIndex);
-				if (fullPath.Length - index > MaxFileNameLength)
-				{
-					// file name is too long. need to shrink
-					fullPath = $"{DirectoryUtils.LongPathPrefix}{fullPath}";
-					string directory = Path.GetDirectoryName(fullPath);
-					string fileName = Path.GetFileNameWithoutExtension(fullPath);
-					string extension = Path.GetExtension(fullPath);
-					fileName = fileName.Substring(0, MaxFileNameLength - extension.Length - 1);
-					return Path.Combine(directory, fileName + extension);
-				}
-				else if (fullPath.Length >= MaxFilePathLength)
-				{
-					// name is ok but whole path is too long. just add a prefix
-					return $"{DirectoryUtils.LongPathPrefix}{fullPath}";
-				}
-			}
 			return path;
 		}
 
@@ -177,11 +146,7 @@ namespace uTinyRipper
 
 		public static bool IsReservedName(string name)
 		{
-			if (true) //RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-			{
-				return ReservedNames.Contains(name.ToLower());
-			}
-			return false;
+			return ReservedNames.Contains(name.ToLower());
 		}
 
 		private static Regex GenerateFileNameRegex()

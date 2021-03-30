@@ -51,12 +51,7 @@ namespace uTinyRipper.Project
 
 			string filePath = Path.Combine(subPath, fileName);
 			bool result = ExportInner(container, filePath);
-			if (result)
-			{
-				Meta meta = new Meta(Asset.GUID, CreateImporter(container));
-				ExportMeta(container, meta, filePath);
-				return true;
-			}
+			
 			return false;
 		}
 

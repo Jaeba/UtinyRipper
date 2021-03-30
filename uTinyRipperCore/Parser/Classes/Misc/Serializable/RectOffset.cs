@@ -1,6 +1,3 @@
-using uTinyRipper.YAML;
-using uTinyRipper.Converters;
-using uTinyRipper.Layout;
 
 namespace uTinyRipper.Classes
 {
@@ -22,16 +19,6 @@ namespace uTinyRipper.Classes
 			writer.Write(Bottom);
 		}
 
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			YAMLMappingNode node = new YAMLMappingNode();
-			RectOffsetLayout layout = container.ExportLayout.Serialized.RectOffset;
-			node.Add(layout.LeftName, Left);
-			node.Add(layout.RightName, Right);
-			node.Add(layout.TopName, Top);
-			node.Add(layout.BottomName, Bottom);
-			return node;
-		}
 
 		public int Left { get; set; }
 		public int Right { get; set; }

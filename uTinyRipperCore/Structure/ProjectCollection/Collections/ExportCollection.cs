@@ -4,7 +4,6 @@ using System.IO;
 using System.Text;
 using uTinyRipper.Classes;
 using uTinyRipper.Converters;
-using uTinyRipper.YAML;
 
 using Object = uTinyRipper.Classes.Object;
 
@@ -12,22 +11,6 @@ namespace uTinyRipper.Project
 {
 	public abstract class ExportCollection : IExportCollection
 	{
-		protected static void ExportMeta(IExportContainer container, Meta meta, string filePath)
-		{
-			string metaPath = $"{filePath}{MetaExtension}";
-			using (var fileStream = FileUtils.CreateVirtualFile(metaPath))
-			using (var stream = new BufferedStream(fileStream))
-			using (var streamWriter = new InvariantStreamWriter(stream, new UTF8Encoding(false)))
-			{
-				YAMLWriter writer = new YAMLWriter();
-				writer.IsWriteDefaultTag = false;
-				writer.IsWriteVersion = false;
-				writer.IsFormatKeys = true;
-				YAMLDocument doc = meta.ExportYAMLDocument(container);
-				writer.AddDocument(doc);
-				writer.Write(streamWriter);
-			}
-		}
 
 		public static long GetMainExportID(Object asset)
 		{
@@ -81,8 +64,6 @@ namespace uTinyRipper.Project
 			string uniqueName = FileUtils.GetUniqueName(path, fullName, FileUtils.MaxFileNameLength - MetaExtension.Length);
 			string filePath = Path.Combine(path, uniqueName);
 			AssetExporter.Export(container, asset, filePath);
-			Meta meta = new Meta(asset.GUID, importer);
-			ExportMeta(container, meta, filePath);
 		}
 		
 		protected string GetUniqueFileName(ISerializedFile file, Object asset, string dirPath)

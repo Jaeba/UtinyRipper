@@ -1,7 +1,4 @@
-﻿using uTinyRipper.Converters;
-using uTinyRipper.YAML;
-
-namespace uTinyRipper.Classes.AssetImporters
+﻿namespace uTinyRipper.Classes.AssetImporters
 {
 	public struct SourceAssetIdentifier : IAsset
 	{
@@ -51,15 +48,6 @@ namespace uTinyRipper.Classes.AssetImporters
 			writer.Write(Type);
 			writer.Write(Assembly);
 			writer.Write(Name);
-		}
-
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			YAMLMappingNode node = new YAMLMappingNode();
-			node.Add(TypeName, Type);
-			node.Add(AssemblyName, Assembly);
-			node.Add(NameName, Name);
-			return node;
 		}
 
 		public override bool Equals(object obj)

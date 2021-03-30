@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using uTinyRipper.YAML;
-using uTinyRipper.Converters;
 using uTinyRipper.Layout;
 
 namespace uTinyRipper.Classes
@@ -43,11 +41,6 @@ namespace uTinyRipper.Classes
 		protected void WriteObject(AssetWriter writer)
 		{
 			base.Write(writer);
-		}
-
-		protected YAMLMappingNode ExportYAMLRootObject(IExportContainer container)
-		{
-			return base.ExportYAMLRoot(container);
 		}
 
 		protected IEnumerable<PPtr<Object>> FetchDependenciesObject(DependencyContext context)

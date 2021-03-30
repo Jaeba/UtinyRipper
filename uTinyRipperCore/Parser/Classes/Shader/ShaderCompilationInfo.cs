@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-using uTinyRipper.Converters;
-using uTinyRipper.YAML;
 
 namespace uTinyRipper.Classes.Shaders
 {
-	public struct ShaderCompilationInfo : IAssetReadable, IYAMLExportable
+	public struct ShaderCompilationInfo : IAssetReadable
 	{
 		/// <summary>
 		/// 5.2.0 adn greater
@@ -21,16 +19,6 @@ namespace uTinyRipper.Classes.Shaders
 			{
 				HasFixedFunctionShaders = reader.ReadBoolean();
 			}
-		}
-
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			YAMLMappingNode node = new YAMLMappingNode();
-			node.Add(SnippetsName, Snippets.ExportYAML(container));
-			node.Add(MeshComponentsFromSnippetsName, MeshComponentsFromSnippets);
-			node.Add(HasSurfaceShadersName, HasSurfaceShaders);
-			node.Add(HasFixedFunctionShadersName, HasFixedFunctionShaders);
-			return node;
 		}
 
 		public IReadOnlyDictionary<int, ShaderSnippet> Snippets => m_snippets;

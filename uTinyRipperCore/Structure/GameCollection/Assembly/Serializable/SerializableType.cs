@@ -52,10 +52,6 @@ namespace uTinyRipper.Game.Assembly
 					return new Vector4f();
 				case RectName:
 					return new Rectf();
-				case BoundsName:
-					return new AABB();
-				case BoundsIntName:
-					return new AABBi();
 				case QuaternionName:
 					return new Quaternionf();
 				case Matrix4x4Name:
@@ -66,8 +62,6 @@ namespace uTinyRipper.Game.Assembly
 					return new ColorRGBA32();
 				case LayerMaskName:
 					return new LayerMask();
-				case GradientName:
-					return new Gradient();
 				case RectOffsetName:
 					return new RectOffset();
 

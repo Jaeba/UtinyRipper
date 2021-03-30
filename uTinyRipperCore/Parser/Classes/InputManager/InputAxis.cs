@@ -1,9 +1,6 @@
-﻿using uTinyRipper.YAML;
-using uTinyRipper.Converters;
-
-namespace uTinyRipper.Classes.InputManagers
+﻿namespace uTinyRipper.Classes.InputManagers
 {
-	public struct InputAxis : IAssetReadable, IYAMLExportable
+	public struct InputAxis : IAssetReadable
 	{
 		public InputAxis(string name, string positive, string altPositive)
 		{
@@ -51,28 +48,7 @@ namespace uTinyRipper.Classes.InputManagers
 			JoyNum = (JoystickType)reader.ReadInt32();
 		}
 
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			YAMLMappingNode node = new YAMLMappingNode();
-			node.AddSerializedVersion(ToSerializedVersion(container.Version));
-			node.Add(NameName, Name);
-			node.Add(DescriptiveNameName, DescriptiveName);
-			node.Add(DescriptiveNegativeNameName, DescriptiveNegativeName);
-			node.Add(NegativeButtonName, NegativeButton);
-			node.Add(PositiveButtonName, PositiveButton);
-			node.Add(AltNegativeButtonName, AltNegativeButton);
-			node.Add(AltPositiveButtonName, AltPositiveButton);
-			node.Add(GravityName, Gravity);
-			node.Add(DeadName, Dead);
-			node.Add(SensitivityName, Sensitivity);
-			node.Add(SnapName, Snap);
-			node.Add(InvertName, Invert);
-			node.Add(TypeName, (int)Type);
-			node.Add(AxisName, (int)Axis);
-			node.Add(JoyNumName, (int)JoyNum);
-			return node;
-		}
-
+		
 		public string Name { get; set; }
 		public string DescriptiveName { get; set; }
 		public string DescriptiveNegativeName { get; set; }

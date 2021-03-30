@@ -1,7 +1,3 @@
-using uTinyRipper.YAML;
-using uTinyRipper.Converters;
-using uTinyRipper.Layout;
-
 namespace uTinyRipper.Classes
 {
 	public struct Matrix4x4f : IAsset
@@ -46,28 +42,6 @@ namespace uTinyRipper.Classes
 			writer.Write(E33);
 		}
 		
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			YAMLMappingNode node = new YAMLMappingNode();
-			Matrix4x4fLayout layout = container.ExportLayout.Serialized.Matrix4x4f;
-			node.Add(layout.E00Name, E00);
-			node.Add(layout.E01Name, E01);
-			node.Add(layout.E02Name, E02);
-			node.Add(layout.E03Name, E03);
-			node.Add(layout.E10Name, E10);
-			node.Add(layout.E11Name, E11);
-			node.Add(layout.E12Name, E12);
-			node.Add(layout.E13Name, E13);
-			node.Add(layout.E20Name, E20);
-			node.Add(layout.E21Name, E21);
-			node.Add(layout.E22Name, E22);
-			node.Add(layout.E23Name, E23);
-			node.Add(layout.E30Name, E30);
-			node.Add(layout.E31Name, E31);
-			node.Add(layout.E32Name, E32);
-			node.Add(layout.E33Name, E33);
-			return node;
-		}
 
 		public static Matrix4x4f Identity => new Matrix4x4f { E00 = 1.0f, E11 = 1.0f, E22 = 1.0f, E33 = 1.0f };
 

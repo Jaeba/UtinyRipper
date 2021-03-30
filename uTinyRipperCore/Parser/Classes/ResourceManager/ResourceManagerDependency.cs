@@ -1,10 +1,8 @@
 using System.Collections.Generic;
-using uTinyRipper.YAML;
-using uTinyRipper.Converters;
 
 namespace uTinyRipper.Classes.ResourceManagers
 {
-	public struct ResourceManagerDependency : IAssetReadable, IYAMLExportable, IDependent
+	public struct ResourceManagerDependency : IAssetReadable, IDependent
 	{
 		public void Read(AssetReader reader)
 		{
@@ -21,13 +19,6 @@ namespace uTinyRipper.Classes.ResourceManagers
 			}
 		}
 
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			YAMLMappingNode node = new YAMLMappingNode();
-			node.Add(ObjectName, Object.ExportYAML(container));
-			node.Add(DependenciesName, Dependencies.ExportYAML(container));
-			return node;
-		}
 
 		public PPtr<Object>[] Dependencies { get; set; }
 

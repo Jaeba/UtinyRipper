@@ -1,11 +1,9 @@
 ﻿using SevenZip;
 using System.Collections.Generic;
-using uTinyRipper.YAML;
-using uTinyRipper.Converters;
 
 namespace uTinyRipper.Classes.Materials
 {
-	public struct UnityPropertySheet : IAssetReadable, IYAMLExportable, IDependent
+	public struct UnityPropertySheet : IAssetReadable, IDependent
 	{
 		public static int ToSerializedVersion(Version version)
 		{
@@ -65,16 +63,6 @@ namespace uTinyRipper.Classes.Materials
 			m_colors.Read(reader);
 		}
 		
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			YAMLMappingNode node = new YAMLMappingNode();
-			node.AddSerializedVersion(ToSerializedVersion(container.ExportVersion));
-			node.Add(TexEnvsName, m_texEnvs.ExportYAML(container));
-			node.Add(FloatsName, m_floats.ExportYAML(container));
-			node.Add(ColorsName, m_colors.ExportYAML(container));
-			return node;
-		}
-
 		public IEnumerable<PPtr<Object>> FetchDependencies(DependencyContext context)
 		{
 			foreach (PPtr<Object> asset in context.FetchDependencies(TexEnvs.Values, TexEnvsName))

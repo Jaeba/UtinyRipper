@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using uTinyRipper.Classes;
-using uTinyRipper.Converters;
-using uTinyRipper.YAML;
 
 using Object = uTinyRipper.Classes.Object;
 
@@ -22,11 +20,6 @@ namespace uTinyRipper.Game.Assembly
 		public IEnumerable<PPtr<Object>> FetchDependencies(DependencyContext context)
 		{
 			yield return context.FetchDependency(Pointer, string.Empty);
-		}
-
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			return Pointer.ExportYAML(container);
 		}
 
 		public PPtr<Object> Pointer;

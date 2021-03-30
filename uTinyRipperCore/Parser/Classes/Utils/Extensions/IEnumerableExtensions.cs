@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using uTinyRipper.Converters;
-using uTinyRipper.YAML;
-using uTinyRipper.Classes.Misc;
 
 namespace uTinyRipper.Classes
 {
@@ -20,16 +17,6 @@ namespace uTinyRipper.Classes
 				index++;
 			}
 			return -1;
-		}
-
-		public static YAMLNode ExportYAML(this IEnumerable<Float> _this, IExportContainer container)
-		{
-			YAMLSequenceNode node = new YAMLSequenceNode(SequenceStyle.Flow);
-			foreach (Float value in _this)
-			{
-				node.Add(value.ExportYAML(container));
-			}
-			return node;
 		}
 	}
 }

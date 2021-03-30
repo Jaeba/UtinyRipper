@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
-using uTinyRipper.Converters;
-using uTinyRipper.YAML;
 using uTinyRipper.Classes.Misc;
 using uTinyRipper;
 using System;
 
 namespace uTinyRipper.Classes.Shaders
 {
-	public struct ShaderSnippet : IAssetReadable, IYAMLExportable
+	public struct ShaderSnippet : IAssetReadable
 	{
 		public static int ToSerializedVersion(Version version)
 		{
@@ -201,43 +199,6 @@ namespace uTinyRipper.Classes.Shaders
 				NonStrippedUserKeywords = reader.ReadString();
 				BuiltinKeywords = reader.ReadString();
 			}
-		}
-
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			YAMLMappingNode node = new YAMLMappingNode();
-			node.AddSerializedVersion(ToSerializedVersion(container.ExportVersion));
-			node.Add(CodeName, Code);
-			node.Add(AssetPathName, AssetPath);
-			node.Add(PlatformMaskName, PlatformMask);
-			node.Add(HardwareTierVariantsMaskName, HardwareTierVariantsMask);
-			node.Add(StartLineName, StartLine);
-			node.Add(TypesMaskName, TypesMask);
-			node.Add(IncludesHashName, IncludesHash.ExportYAML(container));
-			node.Add(CodeHashName, CodeHash.ExportYAML(container));
-			node.Add(FromOtherName, FromOther);
-			if (HasForceSyncCompilation(container.ExportVersion))
-			{
-				node.Add(ForceSyncCompilationName, ForceSyncCompilation);
-			}
-			node.Add(LanguageName, Language);
-			node.Add(VariantsUser0Name, GetVariantsUser0(container.Version).ExportYAML());
-			node.Add(VariantsUser1Name, GetVariantsUser1(container.Version).ExportYAML());
-			node.Add(VariantsUser2Name, GetVariantsUser2(container.Version).ExportYAML());
-			node.Add(VariantsUser3Name, GetVariantsUser3(container.Version).ExportYAML());
-			node.Add(VariantsUser4Name, GetVariantsUser4(container.Version).ExportYAML());
-			node.Add(VariantsUser5Name, GetVariantsUser5(container.Version).ExportYAML());
-			node.Add(VariantsBuiltin0Name, GetVariantsBuiltin0(container.Version).ExportYAML());
-			node.Add(VariantsBuiltin1Name, GetVariantsBuiltin1(container.Version).ExportYAML());
-			node.Add(VariantsBuiltin2Name, GetVariantsBuiltin2(container.Version).ExportYAML());
-			node.Add(VariantsBuiltin3Name, GetVariantsBuiltin3(container.Version).ExportYAML());
-			node.Add(VariantsBuiltin4Name, GetVariantsBuiltin4(container.Version).ExportYAML());
-			node.Add(VariantsBuiltin5Name, GetVariantsBuiltin5(container.Version).ExportYAML());
-			node.Add(BaseRequirementsName, GetBaseRequirements(container.Version));
-			node.Add(KeywordTargetInfoName, GetKeywordTargetInfo(container.Version).ExportYAML(container));
-			node.Add(NonStrippedUserKeywordsName, GetNonStrippedUserKeywords(container.Version));
-			node.Add(BuiltinKeywordsName, GetBuiltinKeywords(container.Version));
-			return node;
 		}
 
 		private string[][] GetVariantsUser0(Version version)

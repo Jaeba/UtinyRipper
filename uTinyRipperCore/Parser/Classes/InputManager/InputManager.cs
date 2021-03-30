@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using uTinyRipper.Classes.InputManagers;
-using uTinyRipper.Converters;
-using uTinyRipper.YAML;
 
 namespace uTinyRipper.Classes
 {
@@ -28,15 +26,7 @@ namespace uTinyRipper.Classes
 
 			Axes = reader.ReadAssetArray<InputAxis>();
 		}
-
-		protected override YAMLMappingNode ExportYAMLRoot(IExportContainer container)
-		{
-			YAMLMappingNode node = base.ExportYAMLRoot(container);
-			node.AddSerializedVersion(ToSerializedVersion(container.ExportVersion));
-			node.Add(AxesName, GetAxes(container.Version).ExportYAML(container));
-			return node;
-		}
-
+		
 		private IReadOnlyList<InputAxis> GetAxes(Version version)
 		{
 			if (ToSerializedVersion(version) >= 2)

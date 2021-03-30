@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using uTinyRipper.YAML;
-using uTinyRipper.Converters;
 
 namespace uTinyRipper.Classes
 {
@@ -49,10 +47,6 @@ namespace uTinyRipper.Classes
 			}
 		}
 
-		protected override YAMLMappingNode ExportYAMLRoot(IExportContainer container)
-		{
-			throw new NotSupportedException();
-		}
 
 		public PPtr<Object>[] Assets { get; set; }
 		public string[] Dependencies { get; set; }

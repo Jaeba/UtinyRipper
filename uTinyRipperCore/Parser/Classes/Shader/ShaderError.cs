@@ -1,9 +1,6 @@
-﻿using uTinyRipper.Converters;
-using uTinyRipper.YAML;
-
-namespace uTinyRipper.Classes.Shaders
+﻿namespace uTinyRipper.Classes.Shaders
 {
-	public struct ShaderError : IAssetReadable, IYAMLExportable
+	public struct ShaderError : IAssetReadable
 	{
 		/// <summary>
 		/// 3.5.0 and greater
@@ -29,19 +26,6 @@ namespace uTinyRipper.Classes.Shaders
 			Line = reader.ReadString();
 			Warning = reader.ReadBoolean();
 			ProgramError = reader.ReadBoolean();
-		}
-
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			YAMLMappingNode node = new YAMLMappingNode();
-			node.Add(MessageName, Message);
-			node.Add(MessageDetailsName, GetMessageDetails(container.Version));
-			node.Add(FileName, GetFile(container.Version));
-			node.Add(CompilerPlatformName, (int)CompilerPlatform);
-			node.Add(LineName, Line);
-			node.Add(WarningName, Warning);
-			node.Add(ProgramErrorName, ProgramError);
-			return node;
 		}
 
 		private string GetMessageDetails(Version version)

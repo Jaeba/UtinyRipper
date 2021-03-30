@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using uTinyRipper.Classes.AssetImporters;
 using uTinyRipper.Classes.Misc;
-using uTinyRipper.Converters;
 using uTinyRipper.Layout;
-using uTinyRipper.YAML;
 
 namespace uTinyRipper.Classes
 {
@@ -121,11 +119,7 @@ namespace uTinyRipper.Classes
 					}
 				}
 			}
-			if (HasHash(reader.Version))
-			{
-				OldHashIdentity.Read(reader);
-				NewHashIdentity.Read(reader);
-			}
+			
 			if (HasExternalObjects(reader.Version))
 			{
 				ExternalObjects = new Dictionary<SourceAssetIdentifier, PPtr<Object>>();
@@ -167,11 +161,7 @@ namespace uTinyRipper.Classes
 					}
 				}
 			}
-			if (HasHash(writer.Version))
-			{
-				OldHashIdentity.Write(writer);
-				NewHashIdentity.Write(writer);
-			}
+			
 			if (HasExternalObjects(writer.Version))
 			{
 				ExternalObjects.Write(writer);
@@ -201,40 +191,6 @@ namespace uTinyRipper.Classes
 				}
 			}
 		}
-
-		protected override YAMLMappingNode ExportYAMLRoot(IExportContainer container)
-		{
-			YAMLMappingNode node = new YAMLMappingNode();
-			if (HasInternalIDToNameTable(container.ExportVersion))
-			{
-				if (IncludesIDToName)
-				{
-					node.Add(InternalIDToNameTableName, InternalIDToNameTable.ExportYAML((t) => (int)t));
-				}
-			}
-			else if (FileIDToRecycleNameRelevant(container.ExportVersion))
-			{
-				if (!IsFileIDToRecycleNameConditional(container.ExportVersion) || IncludesIDToName)
-				{
-					node.Add(FileIDToRecycleNameName, FileIDToRecycleName.ExportYAML());
-				}
-			}
-			if (HasExternalObjects(container.ExportVersion))
-			{
-				node.Add(ExternalObjectsName, ExternalObjects.ExportYAML(container));
-			}
-			if (HasUsedFileIDs(container.ExportVersion))
-			{
-				node.Add(UsedFileIDsName, UsedFileIDs.ExportYAML(false));
-			}
-			if (HasHash(container.ExportVersion))
-			{
-				node.Add(OldHashIdentityName, OldHashIdentity.ExportYAML(container));
-				node.Add(NewHashIdentityName, NewHashIdentity.ExportYAML(container));
-			}
-			return node;
-		}
-
 		protected void PostRead(AssetReader reader)
 		{
 			if (HasUserData(reader.Version))
@@ -268,22 +224,6 @@ namespace uTinyRipper.Classes
 			if (HasAssetBundleVariant(writer.Version))
 			{
 				writer.Write(AssetBundleVariant);
-			}
-		}
-
-		protected void PostExportYAML(IExportContainer container, YAMLMappingNode root)
-		{
-			if (HasUserData(container.ExportVersion))
-			{
-				root.Add(UserDataName, UserData);
-			}
-			if (HasAssetBundleName(container.ExportVersion))
-			{
-				root.Add(AssetBundleNameName, AssetBundleName);
-			}
-			if (HasAssetBundleVariant(container.ExportVersion))
-			{
-				root.Add(AssetBundleVariantName, AssetBundleVariant);
 			}
 		}
 
@@ -328,8 +268,5 @@ namespace uTinyRipper.Classes
 		public const string PreviewName = "m_Preview";
 		public const string OldHashIdentityName = "m_OldHashIdentity";
 		public const string NewHashIdentityName = "m_NewHashIdentity";
-
-		public MdFour OldHashIdentity;
-		public MdFour NewHashIdentity;
 	}
 }

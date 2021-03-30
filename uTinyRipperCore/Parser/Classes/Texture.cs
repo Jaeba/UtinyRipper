@@ -1,6 +1,4 @@
 using uTinyRipper.Classes.Misc;
-using uTinyRipper.Converters;
-using uTinyRipper.YAML;
 
 namespace uTinyRipper.Classes
 {
@@ -36,21 +34,6 @@ namespace uTinyRipper.Classes
 				DownscaleFallback = reader.ReadBoolean();
 				reader.AlignStream();
 			}
-		}
-
-		protected override YAMLMappingNode ExportYAMLRoot(IExportContainer container)
-		{
-			YAMLMappingNode node = base.ExportYAMLRoot(container);
-			if (HasImageContentsHash(container.ExportVersion, container.ExportFlags))
-			{
-				node.Add(ImageContentsHashName, GetImageContentsHash(container.Version, container.Flags).ExportYAML(container));
-			}
-			if (HasFallbackFormat(container.ExportVersion))
-			{
-				node.Add(ForcedFallbackFormatName, ForcedFallbackFormat);
-				node.Add(DownscaleFallbackName, DownscaleFallback);
-			}
-			return node;
 		}
 
 		private Hash128 GetImageContentsHash(Version version, TransferInstructionFlags flags)

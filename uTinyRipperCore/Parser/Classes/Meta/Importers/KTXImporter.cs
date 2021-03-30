@@ -1,6 +1,5 @@
 ﻿using uTinyRipper.Converters;
 using uTinyRipper.Layout;
-using uTinyRipper.YAML;
 
 namespace uTinyRipper.Classes
 {
@@ -37,13 +36,6 @@ namespace uTinyRipper.Classes
 			base.Write(writer);
 
 			PostWrite(writer);
-		}
-
-		protected override YAMLMappingNode ExportYAMLRoot(IExportContainer container)
-		{
-			YAMLMappingNode node = base.ExportYAMLRoot(container);
-			PostExportYAML(container, node);
-			return node;
 		}
 
 		public override ClassIDType ClassID => ClassIDType.KTXImporter;

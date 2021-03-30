@@ -1,6 +1,4 @@
-﻿using uTinyRipper.Converters;
-using uTinyRipper.Layout;
-using uTinyRipper.YAML;
+﻿using uTinyRipper.Layout;
 
 namespace uTinyRipper.Classes
 {
@@ -50,17 +48,6 @@ namespace uTinyRipper.Classes
 			writer.AlignStream();
 
 			PostWrite(writer);
-		}
-
-		protected override YAMLMappingNode ExportYAMLRoot(IExportContainer container)
-		{
-			YAMLMappingNode node = base.ExportYAMLRoot(container);
-			if (HasMainObjectFileID(container.ExportVersion))
-			{
-				node.Add(MainObjectFileIDName, MainObjectFileID);
-			}
-			PostExportYAML(container, node);
-			return node;
 		}
 
 		public override ClassIDType ClassID => ClassIDType.NativeFormatImporter;

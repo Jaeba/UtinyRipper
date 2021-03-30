@@ -1,6 +1,4 @@
-﻿using uTinyRipper.YAML;
-using uTinyRipper.SerializedFiles;
-using uTinyRipper.Converters;
+﻿using uTinyRipper.SerializedFiles;
 using uTinyRipper.BundleFiles;
 
 namespace uTinyRipper.Classes.Misc
@@ -68,36 +66,6 @@ namespace uTinyRipper.Classes.Misc
 			writer.Write(Data1);
 			writer.Write(Data2);
 			writer.Write(Data3);
-		}
-
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			YAMLMappingNode node = new YAMLMappingNode();
-			node.AddSerializedVersion(ToSerializedVersion(container.ExportVersion));
-			if (ToSerializedVersion(container.Version) > 1)
-			{
-				node.Add(HashName, $"{Data0:x8}{Data1:x8}{Data2:x8}{Data3:x8}");
-			}
-			else
-			{
-				node.Add(Bytes0Name, (byte)((Data0 & 0x000000FF) >> 0));
-				node.Add(Bytes1Name, (byte)((Data0 & 0x0000FF00) >> 8));
-				node.Add(Bytes2Name, (byte)((Data0 & 0x00FF0000) >> 16));
-				node.Add(Bytes3Name, (byte)((Data0 & 0xFF000000) >> 24));
-				node.Add(Bytes4Name, (byte)((Data1 & 0x000000FF) >> 0));
-				node.Add(Bytes5Name, (byte)((Data1 & 0x0000FF00) >> 8));
-				node.Add(Bytes6Name, (byte)((Data1 & 0x00FF0000) >> 16));
-				node.Add(Bytes7Name, (byte)((Data1 & 0xFF000000) >> 24));
-				node.Add(Bytes8Name, (byte)((Data2 & 0x000000FF) >> 0));
-				node.Add(Bytes9Name, (byte)((Data2 & 0x0000FF00) >> 8));
-				node.Add(Bytes10Name, (byte)((Data2 & 0x00FF0000) >> 16));
-				node.Add(Bytes11Name, (byte)((Data2 & 0xFF000000) >> 24));
-				node.Add(Bytes12Name, (byte)((Data3 & 0x000000FF) >> 0));
-				node.Add(Bytes13Name, (byte)((Data3 & 0x0000FF00) >> 8));
-				node.Add(Bytes14Name, (byte)((Data3 & 0x00FF0000) >> 16));
-				node.Add(Bytes15Name, (byte)((Data3 & 0xFF000000) >> 24));
-			}
-			return node;
 		}
 
 		public override int GetHashCode()

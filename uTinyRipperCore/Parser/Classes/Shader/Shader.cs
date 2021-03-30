@@ -4,7 +4,6 @@ using System.IO;
 using uTinyRipper.Classes.Materials;
 using uTinyRipper.Classes.Shaders;
 using System.Text;
-using uTinyRipper.YAML;
 using uTinyRipper.Converters;
 using uTinyRipper.Converters.Shaders;
 using uTinyRipper.Layout;
@@ -243,11 +242,6 @@ namespace uTinyRipper.Classes
 				default:
 					return new ShaderUnknownExporter(graphicApi);
 			}
-		}
-
-		protected override YAMLMappingNode ExportYAMLRoot(IExportContainer container)
-		{
-			throw new NotSupportedException();
 		}
 
 		private void UnpackSubProgramBlobs(AssetLayout layout, uint offset, uint compressedLength, uint decompressedLength, byte[] compressedBlob)

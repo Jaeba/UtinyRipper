@@ -36,8 +36,6 @@ namespace uTinyRipper
 					return new InputManager(assetInfo);
 				case ClassIDType.Material:
 					return new Material(assetInfo);
-				case ClassIDType.QualitySettings:
-					return new QualitySettings(assetInfo);
 				case ClassIDType.Shader:
 					return new Shader(assetInfo);
 				case ClassIDType.TextAsset:
@@ -50,8 +48,6 @@ namespace uTinyRipper
 					return new PreloadData(assetInfo);
 				case ClassIDType.ShaderVariantCollection:
 					return new ShaderVariantCollection(assetInfo);
-				case ClassIDType.UnityConnectSettings:
-					return new UnityConnectSettings(assetInfo);
 
 				case ClassIDType.DefaultAsset:
 					return new DefaultAsset(assetInfo);

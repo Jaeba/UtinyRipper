@@ -62,23 +62,6 @@ namespace uTinyRipper
 
 		public static string ToLongPath(string path, bool force)
 		{
-			if (true) //RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-			{
-				if (RunetimeUtils.IsRunningOnNetCore)
-				{
-					return path;
-				}
-				if (path.StartsWith(LongPathPrefix, StringComparison.Ordinal))
-				{
-					return path;
-				}
-
-				string fullPath = FileUtils.GetFullPath(path);
-				if (force || fullPath.Length >= MaxDirectoryLength)
-				{
-					return $"{LongPathPrefix}{fullPath}";
-				}
-			}
 			return path;
 		}
 

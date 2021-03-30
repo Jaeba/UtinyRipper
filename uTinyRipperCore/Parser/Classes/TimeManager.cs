@@ -1,7 +1,4 @@
-﻿using uTinyRipper.Converters;
-using uTinyRipper.YAML;
-
-namespace uTinyRipper.Classes
+﻿namespace uTinyRipper.Classes
 {
 	public sealed class TimeManager : GlobalGameManager
 	{
@@ -33,16 +30,6 @@ namespace uTinyRipper.Classes
 			{
 				MaximumParticleTimestep = reader.ReadSingle();
 			}
-		}
-
-		protected override YAMLMappingNode ExportYAMLRoot(IExportContainer container)
-		{
-			YAMLMappingNode node = base.ExportYAMLRoot(container);
-			node.Add(FixedTimestepName, FixedTimestep);
-			node.Add(MaximumAllowedTimestepName, GetMaximumAllowedTimestep(container.Version));
-			node.Add(TimeScaleName, TimeScale);
-			node.Add(MaximumParticleTimestepName, GetMaximumParticleTimestep(container.Version));
-			return node;
 		}
 
 		private float GetMaximumAllowedTimestep(Version version)

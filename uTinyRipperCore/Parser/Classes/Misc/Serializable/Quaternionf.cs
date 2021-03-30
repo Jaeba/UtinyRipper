@@ -1,8 +1,5 @@
 using System;
 using System.Globalization;
-using uTinyRipper.YAML;
-using uTinyRipper.Converters;
-using uTinyRipper.Layout;
 
 namespace uTinyRipper.Classes
 {
@@ -76,18 +73,6 @@ namespace uTinyRipper.Classes
 			writer.Write(Y);
 			writer.Write(Z);
 			writer.Write(W);
-		}
-
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			YAMLMappingNode node = new YAMLMappingNode();
-			QuaternionfLayout layout = container.ExportLayout.Serialized.Quaternionf;
-			node.Style = MappingStyle.Flow;
-			node.Add(layout.XName, X);
-			node.Add(layout.YName, Y);
-			node.Add(layout.ZName, Z);
-			node.Add(layout.WName, W);
-			return node;
 		}
 
 		public override string ToString()

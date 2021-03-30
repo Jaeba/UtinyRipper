@@ -1,7 +1,6 @@
 ﻿using System;
 using uTinyRipper.Converters;
 using uTinyRipper.SerializedFiles;
-using uTinyRipper.YAML;
 
 namespace uTinyRipper.Classes
 {
@@ -52,26 +51,6 @@ namespace uTinyRipper.Classes
 			{
 				writer.Write((int)PathID);
 			}
-		}
-
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			if (IsNull)
-			{
-				return MetaPtr.NullPtr.ExportYAML(container);
-			}
-
-			T asset = FindAsset(container);
-			if (asset == null)
-			{
-				ClassIDType classType = typeof(T).ToClassIDType();
-				AssetType assetType = container.ToExportType(classType);
-				MetaPtr pointer = new MetaPtr(classType, assetType);
-				return pointer.ExportYAML(container);
-			}
-
-			MetaPtr exPointer = container.CreateExportPointer(asset);
-			return exPointer.ExportYAML(container);
 		}
 
 		public T FindAsset(IAssetContainer file)

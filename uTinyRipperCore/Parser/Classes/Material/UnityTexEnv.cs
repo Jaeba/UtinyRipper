@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-using uTinyRipper.YAML;
-using uTinyRipper.Converters;
 
 namespace uTinyRipper.Classes.Materials
 {
-	public struct UnityTexEnv : IAssetReadable, IYAMLExportable, IDependent
+	public struct UnityTexEnv : IAssetReadable, IDependent
 	{
 		/// <summary>
 		/// Less than 2.1.0
@@ -30,16 +28,6 @@ namespace uTinyRipper.Classes.Materials
 		{
 			yield return context.FetchDependency(Texture, TextureName);
 		}
-
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			YAMLMappingNode node = new YAMLMappingNode();
-			node.Add(TextureName, Texture.ExportYAML(container));
-			node.Add(ScaleName, Scale.ExportYAML(container));
-			node.Add(OffsetName, Offset.ExportYAML(container));
-			return node;
-		}
-
 
 		public Vector2f Scale
 		{

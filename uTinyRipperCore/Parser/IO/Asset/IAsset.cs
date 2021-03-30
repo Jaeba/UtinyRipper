@@ -1,6 +1,6 @@
 ﻿namespace uTinyRipper
 {
-	public interface IAsset : IAssetReadable, IAssetWritable, IYAMLExportable
+	public interface IAsset : IAssetReadable, IAssetWritable
 	{
 	}
 }

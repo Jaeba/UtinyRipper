@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using uTinyRipper.Classes.Materials;
-using uTinyRipper.Converters;
-using uTinyRipper.YAML;
 
 namespace uTinyRipper.Classes
 {
@@ -110,23 +108,6 @@ namespace uTinyRipper.Classes
 			{
 				yield return asset;
 			}
-		}
-
-		protected override YAMLMappingNode ExportYAMLRoot(IExportContainer container)
-		{
-#warning TODO:
-			YAMLMappingNode node = base.ExportYAMLRoot(container);
-			node.InsertSerializedVersion(ToSerializedVersion(container.ExportVersion));
-			node.Add(ShaderName, Shader.ExportYAML(container));
-			node.Add(ShaderKeywordsName, HasKeywords(container.Version) ? (IsKeywordsArray(container.Version) ? string.Join(" ", ShaderKeywordsArray) : ShaderKeywords) : string.Empty);
-			node.Add(LightmapFlagsName, LightmapFlags);
-			node.Add(EnableInstancingVariantsName, EnableInstancingVariants);
-			node.Add(DoubleSidedGIName, DoubleSidedGI);
-			node.Add(CustomRenderQueueName, CustomRenderQueue);
-			node.Add(StringTagMapName, HasStringTagMap(container.Version) ? StringTagMap.ExportYAML() : YAMLMappingNode.Empty);
-			node.Add(DisabledShaderPassesName, HasDisabledShaderPasses(container.Version) ? DisabledShaderPasses.ExportYAML() : YAMLSequenceNode.Empty);
-			node.Add(SavedPropertiesName, SavedProperties.ExportYAML(container));
-			return node;
 		}
 
 		public override string ExportExtension => "mat";

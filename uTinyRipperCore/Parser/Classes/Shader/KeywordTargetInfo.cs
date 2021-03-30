@@ -1,9 +1,6 @@
-﻿using uTinyRipper.Converters;
-using uTinyRipper.YAML;
-
-namespace uTinyRipper.Classes.Shaders
+﻿namespace uTinyRipper.Classes.Shaders
 {
-	public struct KeywordTargetInfo : IAssetReadable, IYAMLExportable
+	public struct KeywordTargetInfo : IAssetReadable
 	{
 		public KeywordTargetInfo(string name, int requirements)
 		{
@@ -15,14 +12,6 @@ namespace uTinyRipper.Classes.Shaders
 		{
 			KeywordName = reader.ReadString();
 			Requirements = reader.ReadInt32();
-		}
-
-		public YAMLNode ExportYAML(IExportContainer container)
-		{
-			YAMLMappingNode node = new YAMLMappingNode();
-			node.Add(KeywordNameName, KeywordName);
-			node.Add(RequirementsName, Requirements);
-			return node;
 		}
 
 		public override string ToString()
