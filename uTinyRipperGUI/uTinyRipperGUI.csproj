@@ -177,9 +177,6 @@
     <Compile Include="ThirdParty\CSspv\Types.cs" />
     <Compile Include="ThirdParty\D3DCompiler\D3DCompiler.cs" />
     <Compile Include="ThirdParty\D3DCompiler\DotNetDxc.cs" />
-    <Compile Include="ThirdParty\FMOD Studio API\fmod.cs" />
-    <Compile Include="ThirdParty\FMOD Studio API\fmod_dsp.cs" />
-    <Compile Include="ThirdParty\FMOD Studio API\fmod_errors.cs" />
     <Compile Include="ThirdParty\Smolv\OpData.cs" />
     <Compile Include="ThirdParty\Smolv\SmolvDecoder.cs" />
     <Compile Include="ThirdParty\Smolv\SpvOp.cs" />
