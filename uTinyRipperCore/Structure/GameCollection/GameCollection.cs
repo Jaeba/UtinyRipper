@@ -251,7 +251,13 @@ namespace uTinyRipper
 
 		private void Dispose(bool disposing)
 		{
-			AssemblyManager.Dispose();
+			try
+			{
+				AssemblyManager.Dispose();
+			} catch (NullReferenceException e)
+			{
+
+			}
 			foreach (ResourceFile res in m_resources.Values)
 			{
 				res?.Dispose();
