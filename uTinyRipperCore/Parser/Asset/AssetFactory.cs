@@ -30,10 +30,6 @@ namespace uTinyRipper
 		{
 			switch (assetInfo.ClassID)
 			{
-				case ClassIDType.TimeManager:
-					return new TimeManager(assetInfo);
-				case ClassIDType.InputManager:
-					return new InputManager(assetInfo);
 				case ClassIDType.Material:
 					return new Material(assetInfo);
 				case ClassIDType.Shader:
@@ -53,8 +49,6 @@ namespace uTinyRipper
 					return new DefaultAsset(assetInfo);
 				case ClassIDType.DefaultImporter:
 					return new DefaultImporter(assetInfo);
-				case ClassIDType.SceneAsset:
-					return new SceneAsset(assetInfo);
 				case ClassIDType.NativeFormatImporter:
 					return new NativeFormatImporter(assetInfo);
 				case ClassIDType.MonoImporter:
