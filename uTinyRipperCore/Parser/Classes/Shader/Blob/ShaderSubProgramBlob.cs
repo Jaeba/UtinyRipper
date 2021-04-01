@@ -70,13 +70,39 @@ namespace uTinyRipper.Classes.Shaders
 			writer.WriteString(header, j, header.Length - j);
 		}
 
+		public static string printBytes(byte[] bytes)
+		{
+			string s = "";
+			foreach (byte b in bytes)
+			{
+				s += string.Format("{0:X2}", b);
+			}
+			return s;
+		}
+		public static string printAscii(byte[] bytes)
+		{
+			string s = "";
+			foreach (byte b in bytes)
+			{
+				s += (char)b;
+			}
+			return s;
+		}
+
 		private void ReadBlob(AssetLayout layout, MemoryStream memStream, uint compressedLength, uint decompressedLength, int segment)
 		{
+
+			byte[] membytes = memStream.ToArray();
+			string bms = printBytes(membytes);
+
 			byte[] decompressedBuffer = new byte[decompressedLength];
 			using (Lz4DecodeStream lz4Stream = new Lz4DecodeStream(memStream, compressedLength))
 			{
 				lz4Stream.ReadBuffer(decompressedBuffer, 0, decompressedBuffer.Length);
 			}
+
+			string b = printBytes(decompressedBuffer);
+			string a = printAscii(decompressedBuffer);
 
 			using (MemoryStream blobMem = new MemoryStream(decompressedBuffer))
 			{
