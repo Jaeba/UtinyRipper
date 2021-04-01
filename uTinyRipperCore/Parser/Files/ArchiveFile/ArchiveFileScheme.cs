@@ -1,4 +1,3 @@
-using Brotli;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -55,9 +54,6 @@ namespace uTinyRipper
 					case ArchiveType.GZip:
 						buffer = ReadGZip(reader);
 						break;
-					case ArchiveType.Brotli:
-						buffer = ReadBrotli(reader);
-						break;
 
 					default:
 						throw new NotSupportedException(Header.Type.ToString());
@@ -74,23 +70,6 @@ namespace uTinyRipper
 				using (GZipStream gzipStream = new GZipStream(reader.BaseStream, CompressionMode.Decompress))
 				{
 					gzipStream.CopyTo(stream);
-				}
-				return stream.ToArray();
-			}
-		}
-
-		private byte[] ReadBrotli(EndianReader reader)
-		{
-			using (MemoryStream stream = new MemoryStream())
-			{
-				using (BrotliInputStream brotliStream = new BrotliInputStream(reader.BaseStream))
-				{
-					int count;
-					byte[] buffer = new byte[81920];
-					while ((count = brotliStream.Read(buffer, 0, buffer.Length)) > 0)
-					{
-						stream.Write(buffer, 0, count);
-					}
 				}
 				return stream.ToArray();
 			}

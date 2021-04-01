@@ -94,19 +94,6 @@ namespace uTinyRipper
 					}
 					break;
 
-				case BundleType.UnityWeb:
-					{
-						// read only last chunk
-						BundleScene chunkInfo = header.Scenes[header.Scenes.Length - 1];
-						dataStream = new MemoryStream(new byte[chunkInfo.DecompressedSize]);
-						SevenZipHelper.DecompressLZMASizeStream(stream, chunkInfo.CompressedSize, dataStream);
-						metadataOffset = 0;
-
-						dataStream.Position = 0;
-						ReadMetadata(dataStream, metadataSize);
-					}
-					break;
-
 				default:
 					throw new Exception($"Unsupported bundle signature '{Header.Signature}'");
 			}
@@ -126,18 +113,6 @@ namespace uTinyRipper
 				case CompressionType.None:
 					{
 						ReadMetadata(stream, header.UncompressedBlocksInfoSize);
-					}
-					break;
-
-				case CompressionType.Lzma:
-					{
-						using (MemoryStream uncompressedStream = new MemoryStream(new byte[header.UncompressedBlocksInfoSize]))
-						{
-							SevenZipHelper.DecompressLZMAStream(stream, header.CompressedBlocksInfoSize, uncompressedStream, header.UncompressedBlocksInfoSize);
-
-							uncompressedStream.Position = 0;
-							ReadMetadata(uncompressedStream, header.UncompressedBlocksInfoSize);
-						}
 					}
 					break;
 

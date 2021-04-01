@@ -45,11 +45,6 @@ namespace uTinyRipper.Classes
 		/// </summary>
 		public static bool HasDisabledShaderPasses(Version version) => version.IsGreaterEqual(5, 6, 0, VersionType.Beta, 5);
 
-		public string FindPropertyNameByCRC28(uint crc)
-		{
-			return SavedProperties.FindPropertyNameByCRC28(crc);
-		}
-
 		public override void Read(AssetReader reader)
 		{
 			base.Read(reader);

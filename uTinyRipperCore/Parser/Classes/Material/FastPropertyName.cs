@@ -1,6 +1,4 @@
-﻿using SevenZip;
-
-namespace uTinyRipper.Classes.Materials
+﻿namespace uTinyRipper.Classes.Materials
 {
 	public struct FastPropertyName : IAssetReadable
 	{
@@ -9,10 +7,6 @@ namespace uTinyRipper.Classes.Materials
 		/// </summary>
 		private static bool IsPlainString(Version version) => version.IsGreaterEqual(2017, 3);
 
-		public bool IsCRC28Match(uint crc)
-		{
-			return CRC.Verify28DigestUTF8(Value, crc);
-		}
 
 		public void Read(AssetReader reader)
 		{

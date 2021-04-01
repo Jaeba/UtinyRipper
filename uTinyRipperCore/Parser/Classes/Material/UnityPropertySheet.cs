@@ -1,5 +1,4 @@
-﻿using SevenZip;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace uTinyRipper.Classes.Materials
 {
@@ -13,43 +12,6 @@ namespace uTinyRipper.Classes.Materials
 			}
 			// min version is 2
 			return 2;
-		}
-
-		public string FindPropertyNameByCRC28(uint crc)
-		{
-			foreach (FastPropertyName property in TexEnvs.Keys)
-			{
-				string hdrName = property.Value + HDRPostfixName;
-				if (CRC.Verify28DigestUTF8(hdrName, crc))
-				{
-					return hdrName;
-				}
-				string stName = property.Value + STPostfixName;
-				if (CRC.Verify28DigestUTF8(stName, crc))
-				{
-					return stName;
-				}
-				string texelName = property.Value + TexelSizePostfixName;
-				if (CRC.Verify28DigestUTF8(texelName, crc))
-				{
-					return texelName;
-				}
-			}
-			foreach (FastPropertyName property in Floats.Keys)
-			{
-				if (property.IsCRC28Match(crc))
-				{
-					return property.Value;
-				}
-			}
-			foreach (FastPropertyName property in Colors.Keys)
-			{
-				if (property.IsCRC28Match(crc))
-				{
-					return property.Value;
-				}
-			}
-			return null;
 		}
 
 		public void Read(AssetReader reader)

@@ -76,9 +76,6 @@ namespace uTinyRipper.BundleFiles
 							m_cachedBlockStream.Move(CreateStream(block.UncompressedSize));
 							switch (compressType)
 							{
-								case CompressionType.Lzma:
-									SevenZipHelper.DecompressLZMAStream(m_stream, block.CompressedSize, m_cachedBlockStream, block.UncompressedSize);
-									break;
 
 								case CompressionType.Lz4:
 								case CompressionType.Lz4HC:
