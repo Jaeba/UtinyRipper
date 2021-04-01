@@ -150,12 +150,7 @@ namespace uTinyRipperGUI
 
 			EngineAssetExporter engineExporter = new EngineAssetExporter();
 			GameStructure.FileCollection.Exporter.OverrideExporter(ClassIDType.Material, engineExporter);
-			GameStructure.FileCollection.Exporter.OverrideExporter(ClassIDType.Texture2D, engineExporter);
-			GameStructure.FileCollection.Exporter.OverrideExporter(ClassIDType.Mesh, engineExporter);
 			GameStructure.FileCollection.Exporter.OverrideExporter(ClassIDType.Shader, engineExporter);
-			GameStructure.FileCollection.Exporter.OverrideExporter(ClassIDType.Font, engineExporter);
-			GameStructure.FileCollection.Exporter.OverrideExporter(ClassIDType.Sprite, engineExporter);
-			GameStructure.FileCollection.Exporter.OverrideExporter(ClassIDType.MonoBehaviour, engineExporter);
 
 #if !DEBUG
 			try
