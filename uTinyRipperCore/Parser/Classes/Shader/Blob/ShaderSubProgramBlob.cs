@@ -79,15 +79,7 @@ namespace uTinyRipper.Classes.Shaders
 			}
 			return s;
 		}
-		public static string printAscii(byte[] bytes)
-		{
-			string s = "";
-			foreach (byte b in bytes)
-			{
-				s += (char)b;
-			}
-			return s;
-		}
+		public static string printAscii(byte[] bytes) {	string s = ""; foreach (byte b in bytes) s += (char)b; return s; }
 
 		private void ReadBlob(AssetLayout layout, MemoryStream memStream, uint compressedLength, uint decompressedLength, int segment)
 		{
