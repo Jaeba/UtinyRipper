@@ -271,9 +271,15 @@ namespace uTinyRipper.Lz4
 			}
 		}
 
+		public static string printAscii(byte[] bytes) { string s = ""; foreach (byte b in bytes) s += (char)b; return s; }
+
 		public void ReadBuffer(Stream stream, long count)
 		{
 			int read = (int)Read(stream, count);
+			stream.Position = 0;
+			byte[] bytes = new byte[count];
+			stream.Read(bytes, 0, (int)count);
+			string s = printAscii(bytes);
 			if (read != count)
 			{
 				throw new Exception($"Unexpected end of input stream. Read {read} but expected {count}");
